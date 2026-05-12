@@ -1,0 +1,1361 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ecocina — Cuisines, dressings, salles de bain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f3eee3;        /* warm cream */
+  --bg-2: #ebe4d3;
+  --bg-3: #e2dac6;
+  --ink: #1c1c1d;
+  --ink-soft: #4a4943;
+  --ink-muted: #6f6a5d;
+  --line: #cdc4b0;
+  --accent: #3d5240;    /* deep forest */
+  --accent-2: #b87340;  /* terracotta */
+  --paper: #faf6ec;
+  --display: 'Italiana', 'Cormorant Garamond', serif;
+  --sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body { overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 22px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  mix-blend-mode: difference;
+  color: #f3eee3;
+  pointer-events: none;
+}
+.nav > * { pointer-events: auto; }
+.nav .logo {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+.nav .logo-img {
+  width: 100%; height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  animation: logoReveal 1.8s cubic-bezier(.2,.7,.2,1) forwards;
+  animation-delay: 0.3s;
+}
+.nav .logo-sketch {
+  position: absolute;
+  width: 100%; height: 100%;
+  opacity: 1;
+  animation: sketchFade 1.2s cubic-bezier(.2,.7,.2,1) forwards;
+  animation-delay: 0.6s;
+  border: 1px dashed rgba(250,246,236,0.4);
+  border-radius: 2px;
+}
+@keyframes logoReveal {
+  0% { opacity: 0; transform: scale(0.8) rotate(-8deg); filter: blur(4px); }
+  100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
+}
+@keyframes sketchFade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.nav ul {
+  list-style: none; display: flex; gap: 36px; padding: 0; margin: 0;
+  font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 500;
+}
+.nav .cta {
+  border: 1px solid currentColor;
+  padding: 10px 18px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: stretch;
+  border-bottom: 1px solid var(--line);
+}
+.hero-text {
+  padding: 160px 60px 80px 60px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative;
+}
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--ink-muted);
+  display: flex; align-items: center; gap: 14px;
+}
+.hero-eyebrow::before {
+  content: ""; width: 36px; height: 1px; background: var(--ink-muted);
+}
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(64px, 7.5vw, 132px);
+  line-height: 0.94;
+  letter-spacing: -0.01em;
+  margin: 30px 0 0 0;
+  color: var(--ink);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+  font-family: var(--display);
+}
+.hero-sub {
+  max-width: 460px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-top: 36px;
+}
+.hero-bottom {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 32px;
+  margin-top: 60px;
+}
+.hero-stats {
+  display: flex; gap: 48px;
+}
+.stat { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted); }
+.stat strong { display: block; font-family: var(--display); font-size: 44px; color: var(--ink); letter-spacing: 0; margin-bottom: 4px; }
+
+.scroll-cue {
+  font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--ink-muted);
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  position: absolute; right: 24px; bottom: 60px;
+}
+.scroll-cue::after {
+  content: ""; display: block; width: 1px; height: 60px; background: var(--ink-muted);
+  margin: 14px auto 0;
+}
+
+.hero-stage {
+  position: relative;
+  background: var(--bg-2);
+  overflow: hidden;
+  border-left: 1px solid var(--line);
+}
+/* Hero artwork — animated 3D reveal from sketch to photoreal */
+.hero-art {
+  position: absolute; inset: 0;
+  overflow: hidden;
+  background: #0d0d0e;
+  perspective: 1400px;
+}
+.hero-img, .hero-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform-origin: 55% 55%;
+  animation: heroKen 22s cubic-bezier(.45,.05,.55,.95) infinite;
+  will-change: transform, filter;
+  filter: contrast(1.04) saturate(1.05);
+  display: block;
+  background: #0d0d0e;
+}
+.hero-corners { position: absolute; inset: 18px; pointer-events: none; z-index: 3; }
+.hero-corners span {
+  position: absolute; width: 22px; height: 22px;
+  border: 1px solid rgba(250,246,236,0.55);
+}
+.hero-corners span:nth-child(1) { top: 0; left: 0; border-right: none; border-bottom: none; }
+.hero-corners span:nth-child(2) { top: 0; right: 0; border-left: none; border-bottom: none; }
+.hero-corners span:nth-child(3) { bottom: 0; left: 0; border-right: none; border-top: none; }
+.hero-corners span:nth-child(4) { bottom: 0; right: 0; border-left: none; border-top: none; }
+.hero-marks {
+  position: absolute; left: 28px; bottom: 64px; z-index: 3;
+  display: flex; flex-direction: column; gap: 6px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(250,246,236,0.85);
+}
+.hero-marks .mark { display: flex; align-items: center; gap: 8px; opacity: 0; transform: translateY(4px); }
+.hero-marks .mark i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,196,120,0.95); box-shadow: 0 0 10px rgba(255,196,120,0.75); }
+.hero-marks .m1 { animation: markFade 18s ease-in-out infinite; }
+.hero-marks .m2 { animation: markFade 18s ease-in-out infinite; animation-delay: 6s; }
+.hero-marks .m3 { animation: markFade 18s ease-in-out infinite; animation-delay: 12s; }
+@keyframes markFade {
+  0%,2%   { opacity: 0; transform: translateY(4px); }
+  6%,30%  { opacity: 1; transform: translateY(0); }
+  34%,100%{ opacity: 0; transform: translateY(-4px); }
+}
+.hero-timecode {
+  position: absolute; top: 28px; left: 28px; z-index: 3;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(250,246,236,0.78);
+  padding: 7px 11px;
+  border: 1px solid rgba(250,246,236,0.22);
+  background: rgba(13,13,14,0.42);
+  backdrop-filter: blur(4px);
+}
+.hero-timecode::before {
+  content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: #e54a4a; margin-right: 8px; vertical-align: 1px;
+  animation: rec 1.2s ease-in-out infinite;
+}
+@keyframes rec { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+@keyframes heroKen {
+  0%   { transform: scale(1.02) translate3d(0,0,0); filter: contrast(1.04) saturate(0.92) brightness(0.96); }
+  35%  { transform: scale(1.05) translate3d(-1.2%, -0.8%, 0); filter: contrast(1.02) saturate(1.0) brightness(1.0); }
+  65%  { transform: scale(1.08) translate3d(-2.4%, -1.4%, 0); filter: contrast(1.0)  saturate(1.06) brightness(1.02); }
+  100% { transform: scale(1.02) translate3d(0,0,0); filter: contrast(1.04) saturate(0.92) brightness(0.96); }
+}
+/* faint blueprint grid lives only on the sketch side */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(20,28,40,0.07) 1px, transparent 1px),
+    linear-gradient(0deg,  rgba(20,28,40,0.07) 1px, transparent 1px);
+  background-size: 56px 56px, 56px 56px;
+  -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 28%, rgba(0,0,0,0) 50%);
+          mask-image: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 28%, rgba(0,0,0,0) 50%);
+  mix-blend-mode: multiply;
+  animation: gridPulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.85; }
+}
+/* warm scanning beam — left-to-right, evokes the sketch → photoreal transition */
+.hero-scan {
+  position: absolute; top: -10%; bottom: -10%;
+  width: 2px;
+  left: -2%;
+  background: linear-gradient(180deg, transparent 0%, rgba(255,206,140,0.85) 35%, rgba(255,206,140,0.95) 50%, rgba(255,206,140,0.85) 65%, transparent 100%);
+  box-shadow:
+    0 0 60px 12px rgba(255,196,120,0.45),
+    0 0 120px 40px rgba(255,170,90,0.18);
+  animation: heroScan 11s cubic-bezier(.7,0,.3,1) infinite;
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes heroScan {
+  0%   { left: -4%;  opacity: 0; }
+  8%   { opacity: 1; }
+  55%  { left: 102%; opacity: 1; }
+  62%  { opacity: 0; }
+  100% { left: 102%; opacity: 0; }
+}
+/* warm key-light bloom on the photoreal side, breathing */
+.hero-flare {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 45% 55% at 72% 38%, rgba(255,196,128,0.22), transparent 65%);
+  mix-blend-mode: screen;
+  animation: heroFlare 9s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes heroFlare {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+.hero-vignette {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 60%, transparent 45%, rgba(0,0,0,0.32) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.18) 0%, transparent 25%, transparent 75%, rgba(0,0,0,0.28) 100%);
+  pointer-events: none;
+}
+.hero-stage::after {
+  /* film grain feel */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 70% 30%, transparent 30%, rgba(28,28,29,0.18) 100%);
+  mix-blend-mode: multiply;
+}
+.hero-stage .badge {
+  position: absolute; top: 28px; right: 28px;
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--paper);
+  background: rgba(28,28,29,0.6);
+  padding: 8px 12px;
+  border-radius: 2px;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+.hero-stage .scene-meta {
+  position: absolute; bottom: 28px; left: 28px;
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.06em;
+  color: var(--paper);
+  z-index: 2;
+}
+.hero-stage .scene-meta span { display: block; opacity: 0.7; margin-top: 4px; }
+
+/* ---------- Logo accents throughout ---------- */
+.logo-accent {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-accent img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 60px 0;
+  opacity: 0.15;
+}
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.section-divider .logo-mark {
+  width: 32px;
+  height: 32px;
+  background-image: url('assets/ecocina-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+}
+
+/* ---------- Marquee strip ---------- */
+.marquee {
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--bg);
+}
+.marquee-inner {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 40s linear infinite;
+  padding: 22px 0;
+  font-family: var(--display);
+  font-size: 38px;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.marquee-inner span {
+  padding: 0 32px;
+  display: inline-flex; align-items: center; gap: 32px;
+}
+.marquee-inner span::after {
+  content: "✺"; font-size: 18px; color: var(--accent);
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Section header ---------- */
+section { padding: 140px 60px; position: relative; }
+.section-head {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 100px;
+}
+.section-num {
+  font-family: var(--mono);
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-muted);
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.section-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(48px, 5.4vw, 92px);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  margin: 0;
+  max-width: 14ch;
+}
+.section-title em { font-style: italic; color: var(--accent); }
+
+/* ---------- Manifeste ---------- */
+.manifeste {
+  border-bottom: 1px solid var(--line);
+}
+.manifeste-grid {
+  display: grid; grid-template-columns: 200px 1fr 1fr; gap: 60px;
+}
+.manifeste-grid .label {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-muted); padding-top: 14px; border-top: 1px solid var(--line);
+}
+.manifeste-lead {
+  font-family: var(--display);
+  font-size: clamp(36px, 3.6vw, 58px);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+.manifeste-body {
+  font-size: 17px; line-height: 1.6; color: var(--ink-soft);
+}
+.manifeste-body p + p { margin-top: 18px; }
+
+/* ---------- Caissons (exploded) ---------- */
+.caissons { background: var(--bg-2); border-bottom: 1px solid var(--line); }
+.caissons-stage {
+  position: relative;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  height: 620px;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+}
+#exploded-canvas {
+  position: relative; height: 100%;
+}
+.caissons-info {
+  padding: 50px; display: flex; flex-direction: column; justify-content: space-between;
+  border-left: 1px solid var(--line);
+  position: relative;
+}
+.caissons-tabs {
+  display: flex; gap: 8px;
+}
+.tab {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  border: 1px solid var(--line); background: transparent;
+  padding: 9px 14px; cursor: pointer;
+  color: var(--ink-soft);
+  transition: all 0.2s;
+}
+.tab.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.caissons-info h3 {
+  font-family: var(--display); font-size: 44px; line-height: 1.05; margin: 30px 0 18px; font-weight: 400;
+}
+.caissons-info p {
+  font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin: 0;
+}
+.spec-list {
+  margin-top: 32px; list-style: none; padding: 0; display: grid; gap: 14px;
+}
+.spec-list li {
+  display: grid; grid-template-columns: 110px 1fr; gap: 16px;
+  font-size: 13px; padding-top: 12px; border-top: 1px solid var(--line);
+}
+.spec-list .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted); }
+.spec-list .v { color: var(--ink); }
+
+.explode-control {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(243, 238, 227, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  z-index: 10;
+  width: auto;
+}
+.explode-control label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted);
+  width: auto;
+  white-space: nowrap;
+}
+.explode-control input {
+  width: 120px;
+  -webkit-appearance: none; appearance: none;
+  height: 1px; background: var(--line);
+}
+.explode-control input::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent); cursor: pointer;
+  border: 2px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.explode-control input::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 2px solid var(--paper);
+}
+
+.caissons-modules {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  margin-top: 70px;
+}
+.module-card {
+  border: 1px solid var(--line);
+  padding: 28px;
+  background: var(--bg);
+  display: flex; flex-direction: column; gap: 14px;
+  min-height: 200px;
+}
+.module-card .ico {
+  width: 64px; height: 64px;
+  border: 1px solid var(--ink);
+  position: relative;
+}
+.module-card .ico.bas::after  { content: ""; position: absolute; left: 8px; right: 8px; top: 38px; bottom: 8px; border: 1px solid var(--ink); }
+.module-card .ico.haut::after { content: ""; position: absolute; left: 8px; right: 8px; top: 8px; bottom: 38px; border: 1px solid var(--ink); }
+.module-card .ico.col::after  { content: ""; position: absolute; left: 8px; right: 8px; top: 8px; bottom: 8px; border: 1px solid var(--ink); }
+.module-card .ico.col::before { content: ""; position: absolute; left: 8px; right: 8px; top: 50%; height: 1px; background: var(--ink); }
+.module-card h4 { font-family: var(--display); font-size: 30px; font-weight: 400; margin: 0; }
+.module-card p { font-size: 14px; line-height: 1.55; color: var(--ink-muted); margin: 0; }
+
+/* ---------- Façades ---------- */
+.facades { border-bottom: 1px solid var(--line); }
+.facade-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.facade {
+  background: var(--bg);
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr; gap: 40px;
+  align-items: stretch;
+  min-height: 380px;
+}
+.facade-cover {
+  position: relative;
+  background: var(--bg-3);
+  overflow: hidden;
+}
+.facade-cover .swatch-stack {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr);
+}
+.facade-cover .swatch-stack > div {
+  position: relative; transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
+}
+.facade-cover .swatch-stack > div::after {
+  content: attr(data-name);
+  position: absolute; left: 12px; bottom: 10px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.85); text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+.facade:hover .swatch-stack > div:nth-child(1) { transform: translate(-4%, -4%); }
+.facade:hover .swatch-stack > div:nth-child(2) { transform: translate(4%, -4%); }
+.facade:hover .swatch-stack > div:nth-child(3) { transform: translate(-4%, 4%); }
+.facade:hover .swatch-stack > div:nth-child(4) { transform: translate(4%, 4%); }
+.facade-meta { display: flex; flex-direction: column; justify-content: space-between; }
+.facade-meta .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); }
+.facade-meta h3 { font-family: var(--display); font-weight: 400; font-size: 50px; line-height: 1; margin: 16px 0 18px; }
+.facade-meta p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+.facade-meta .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.facade-meta .chip {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  border: 1px solid var(--line); padding: 6px 10px; color: var(--ink-soft);
+}
+.facade-meta .arrow {
+  margin-top: 24px; display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink);
+}
+.facade-meta .arrow::after { content: "→"; }
+
+/* ---------- Couleurs wall ---------- */
+.couleurs { background: var(--ink); color: var(--paper); border-bottom: 1px solid #2a2a2a; }
+.couleurs .section-num { color: rgba(250,246,236,0.6); border-color: rgba(250,246,236,0.2); }
+.couleurs .section-title { color: var(--paper); }
+.couleurs .section-title em { color: var(--accent-2); }
+.couleurs-intro {
+  font-size: 16px; line-height: 1.6; color: rgba(250,246,236,0.7);
+  max-width: 540px; margin: -40px 0 60px 260px;
+}
+
+.color-family { margin-bottom: 60px; }
+.family-head {
+  display: grid; grid-template-columns: 200px 1fr auto; align-items: baseline; gap: 40px;
+  padding-bottom: 16px; border-bottom: 1px solid rgba(250,246,236,0.15);
+  margin-bottom: 18px;
+}
+.family-head h4 { font-family: var(--display); font-weight: 400; font-size: 42px; margin: 0; color: var(--paper); }
+.family-head .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,246,236,0.55); }
+.family-head .count { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: rgba(250,246,236,0.55); }
+.swatch-row {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+}
+.swatch {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  cursor: pointer;
+  overflow: hidden;
+}
+.swatch .name {
+  position: absolute; left: 14px; bottom: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  color: var(--paper); text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  opacity: 0; transform: translateY(6px); transition: all 0.3s;
+}
+.swatch:hover .name { opacity: 1; transform: translateY(0); }
+.swatch.light .name { color: var(--ink); text-shadow: none; }
+
+/* ---------- Plans de travail ---------- */
+.worktops { border-bottom: 1px solid var(--line); }
+.worktops-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.worktop-card {
+  border: 1px solid var(--line); padding: 36px; min-height: 460px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+  transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
+}
+.worktop-card:hover { transform: translateY(-6px); }
+.worktop-card .preview {
+  flex: 1;
+  margin: 24px -36px;
+  position: relative;
+  overflow: hidden;
+}
+.worktop-card .preview .layer {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+.worktop-card:hover .preview .layer { transform: scale(1.04); }
+.worktop-card h3 { font-family: var(--display); font-size: 44px; font-weight: 400; margin: 0; }
+.worktop-card .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 14px; }
+.worktop-card p { font-size: 13px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+.worktop-card .finishes {
+  display: flex; gap: 6px; margin-top: 18px;
+}
+.worktop-card .finishes .dot {
+  width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--line);
+}
+
+/* Patterns for worktop previews — CSS-only marble-ish gradients */
+.pattern-quartz {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.6), transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(0,0,0,0.08), transparent 50%),
+    repeating-linear-gradient(38deg, rgba(0,0,0,0.04) 0 2px, transparent 2px 14px),
+    #d9d3c5;
+}
+.pattern-ceramic {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.55), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(50,55,60,0.2), transparent 45%),
+    linear-gradient(135deg, #3a3a3e 0%, #4f4f54 50%, #2c2c30 100%);
+}
+.pattern-egger {
+  background:
+    repeating-linear-gradient(90deg, rgba(80,55,30,0.18) 0 2px, transparent 2px 22px),
+    repeating-linear-gradient(90deg, rgba(80,55,30,0.08) 0 9px, transparent 9px 28px),
+    linear-gradient(180deg, #b58a5b 0%, #8e623a 100%);
+}
+
+/* ---------- Partenaires ---------- */
+.partners { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 100px 60px; }
+.partners-row {
+  display: grid; grid-template-columns: repeat(8, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.partner {
+  background: var(--bg-2); padding: 36px 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-size: 28px; color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.partner small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); display: block; text-align: center; }
+.partners-label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-muted);
+  margin-bottom: 32px;
+}
+
+/* ---------- CTA ---------- */
+.cta-block {
+  padding: 160px 60px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  display: grid; grid-template-columns: 200px 1fr; gap: 60px;
+}
+.cta-block .section-num { background: transparent; }
+.cta-block h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(64px, 8vw, 148px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  margin: 0;
+  max-width: 12ch;
+}
+.cta-block h2 em { font-style: italic; color: var(--accent); }
+.cta-row {
+  display: flex; gap: 16px; margin-top: 50px; flex-wrap: wrap;
+}
+.btn {
+  font-family: var(--mono);
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 18px 26px;
+  border: 1px solid var(--ink); color: var(--ink); background: transparent;
+  display: inline-flex; align-items: center; gap: 14px;
+  cursor: pointer; transition: all 0.2s;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn.filled { background: var(--ink); color: var(--paper); }
+.btn.filled:hover { background: var(--accent); border-color: var(--accent); }
+.btn::after { content: "↗"; font-size: 14px; letter-spacing: 0; }
+
+.contact-meta {
+  margin-top: 60px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  padding-top: 36px; border-top: 1px solid var(--line);
+}
+.contact-meta .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 8px; }
+.contact-meta .v { font-family: var(--display); font-size: 28px; }
+
+/* ---------- Footer ---------- */
+footer {
+  padding: 60px 40px 40px;
+  background: var(--ink); color: rgba(250,246,236,0.7);
+  display: flex; justify-content: space-between; align-items: flex-end;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  position: relative;
+}
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background-image: url('assets/ecocina-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.25;
+  margin-top: -20px;
+}
+footer .logo-foot {
+  font-family: var(--display); font-size: 80px; color: var(--paper); letter-spacing: 0;
+  text-transform: none; line-height: 0.9;
+}
+
+/* Reveal on scroll */
+[data-reveal] {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);
+}
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* Responsive — narrow viewports */
+@media (max-width: 980px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-text { padding: 130px 30px 60px; }
+  .hero-stage { height: 60vh; border-left: none; border-top: 1px solid var(--line); }
+  section { padding: 80px 30px; }
+  .section-head, .manifeste-grid, .cta-block { grid-template-columns: 1fr; gap: 24px; }
+  .section-head { margin-bottom: 50px; }
+  .caissons-stage { grid-template-columns: 1fr; height: auto; }
+  #exploded-canvas { height: 380px; }
+  .caissons-info { border-left: none; border-top: 1px solid var(--line); padding: 36px; }
+  .caissons-modules, .facade-grid, .worktops-grid { grid-template-columns: 1fr; }
+  .facade { grid-template-columns: 1fr; padding: 30px; }
+  .partners-row { grid-template-columns: repeat(4, 1fr); }
+  .swatch-row { grid-template-columns: repeat(3, 1fr); }
+  .couleurs-intro { margin-left: 0; }
+  .family-head { grid-template-columns: 1fr; gap: 8px; }
+  footer { flex-direction: column; align-items: flex-start; gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== NAV ============================== -->
+<nav class="nav" data-screen-label="nav">
+  <div class="logo">
+    <div class="logo-sketch"></div>
+    <div class="logo-img" style="background-image: url('assets/ecocina-logo.png');"></div>
+  </div>
+  <ul>
+    <li><a href="#caissons">Caissons</a></li>
+    <li><a href="#facades">Façades</a></li>
+    <li><a href="#couleurs">Couleurs</a></li>
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="cta" href="#contact">Prendre rendez-vous</a>
+</nav>
+
+<!-- ============================== HERO ============================== -->
+<header class="hero" data-screen-label="01 hero">
+  <div class="hero-text">
+    <div>
+      <div class="hero-eyebrow"> CUISINES, DRESSINGS, SALLES DE BAIN</div>
+      <h1>Votre cuisine,<br/>votre style,<br/><em>votre rêve.</em></h1>
+      <p class="hero-sub">
+        Ecocina conçoit des espaces sur mesure qui marient design contemporain,
+        fonctionnalité et qualité — des caissons hydrofuges aux façades laquées,
+        en passant par les plans de travail en quartz et céramique.
+      </p>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-stats">
+        <div class="stat"><strong>14</strong>familles de façades</div>
+        <div class="stat"><strong>120+</strong>finitions &amp; teintes</div>
+        <div class="stat"><strong>06</strong>partenaires premium</div>
+      </div>
+    </div>
+    <div class="scroll-cue">Défilez</div>
+  </div>
+  <div class="hero-stage">
+    <div class="hero-art">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-scan" aria-hidden="true"></div>
+      <div class="hero-flare" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+      <div class="hero-corners" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <div class="hero-marks" aria-hidden="true">
+        <div class="mark m1"><i></i><b>01 — Esquisse</b></div>
+        <div class="mark m2"><i></i><b>02 — Volume</b></div>
+        <div class="mark m3"><i></i><b>03 — Matière</b></div>
+      </div>
+      <div class="hero-timecode" aria-hidden="true">REC · <span id="tc">00:00:00</span> · 24 fps</div>
+    </div>
+    <div class="badge">● Du croquis à la réalité</div>
+    <div class="scene-meta">
+      Cuisine signature · Concept 03
+      <span>Façade Woodimate · Plan Quartz Calacatta · Architecture Ecocina</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================== MARQUEE ============================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>Cuisines</span><span>Dressing</span><span>Salles de bain</span>
+    <span>Electroménager</span><span>Façades laquées</span><span>Quartz &amp; céramique</span>
+    <span>Cuisines</span><span>Dressings</span><span>Salles de bain</span>
+    <span>Caissons hydrofuges</span><span>Façades laquées</span><span>Quartz &amp; céramique</span>
+  </div>
+</div>
+
+<!-- Logo divider accent -->
+<div class="section-divider" aria-hidden="true">
+  <div class="logo-mark"></div>
+</div>
+
+<!-- ============================== MANIFESTE ============================== -->
+<section class="manifeste" data-screen-label="02 manifeste">
+  <div class="manifeste-grid">
+    <div class="label" data-reveal>02 — Manifeste</div>
+    <h2 class="manifeste-lead" data-reveal>
+      Transformer vos espaces en véritables pièces de vie — conçues pour répondre parfaitement
+      à vos besoins, à vos gestes, à vos goûts.
+    </h2>
+    <div class="manifeste-body" data-reveal>
+      <p>
+        Que vous rêviez d'une cuisine fonctionnelle et élégante, d'un dressing qui optimise
+        votre espace ou d'un meuble de salle de bain qui conjugue style et praticité, notre
+        équipe d'experts est là pour donner vie à vos idées.
+      </p>
+      <p>
+        Chaque espace de votre intérieur mérite une attention particulière. C'est pourquoi
+        nous offrons des solutions sur mesure qui allient design contemporain, fonctionnalité
+        et qualité — du dessin technique à la pose finale.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CAISSONS ============================== -->
+<section class="caissons" id="caissons" data-screen-label="03 caissons">
+  <div class="section-head">
+    <div class="section-num" data-reveal>03 — La structure</div>
+    <h2 class="section-title" data-reveal>Caissons <em>hydrofuges</em>, conçus pour durer.</h2>
+  </div>
+
+  <div class="caissons-stage" data-reveal>
+    <div id="exploded-canvas">
+      <div class="explode-control">
+        <label for="explode">Éclaté</label>
+        <input id="explode" type="range" min="0" max="100" value="0" />
+      </div>
+    </div>
+    <div class="caissons-info">
+      <div>
+        <div class="caissons-tabs">
+          <button class="tab active" data-variant="hydro">Hydrofuges</button>
+          <button class="tab" data-variant="normal">16 mm</button>
+        </div>
+        <h3 id="cais-title">Caissons hydrofuges</h3>
+        <p id="cais-body">
+          Conçus pour offrir une résistance optimale à l'humidité, ces caissons sont
+          essentiels dans les espaces soumis aux projections d'eau comme les cuisines
+          et les salles de bain. Un traitement spécifique empêche l'absorption d'eau
+          et évite les déformations.
+        </p>
+        <ul class="spec-list" id="cais-specs">
+          <li><span class="k">Panneau</span><span class="v">STD hydrofuge 18 mm</span></li>
+          <li><span class="k">Chants</span><span class="v">PVC ABS 1 mm posé à chaud</span></li>
+          <li><span class="k">Fond</span><span class="v">Mélaminé 8 mm, assemblage rainuré</span></li>
+          <li><span class="k">Tablette</span><span class="v">Réglable sur taquets métalliques</span></li>
+          <li><span class="k">Garantie</span><span class="v">10 ans structure</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="caissons-modules">
+    <div class="module-card" data-reveal>
+      <div class="ico bas"></div>
+      <h4>Caissons bas</h4>
+      <p>Modules de base posés sur plinthe, hauteur 700/800 mm, tiroirs ou portes battantes.</p>
+    </div>
+    <div class="module-card" data-reveal>
+      <div class="ico haut"></div>
+      <h4>Caissons hauts</h4>
+      <p>Modules suspendus en hauteurs 600 / 700 / 800 / 900 mm, fixation rail invisible.</p>
+    </div>
+    <div class="module-card" data-reveal>
+      <div class="ico col"></div>
+      <h4>Colonnes</h4>
+      <p>Colonnes pleine hauteur pour four encastré, frigo intégré ou rangement vertical.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Logo divider accent -->
+<div class="section-divider" aria-hidden="true">
+  <div class="logo-mark"></div>
+</div>
+
+<!-- ============================== FACADES ============================== -->
+<section class="facades" id="facades" data-screen-label="04 facades">
+  <div class="section-head">
+    <div class="section-num" data-reveal>04 — Façades</div>
+    <h2 class="section-title" data-reveal>Quatorze familles, une <em>infinité</em> de combinaisons.</h2>
+  </div>
+
+  <div class="facade-grid">
+
+    <article class="facade" data-reveal>
+      <div class="facade-cover">
+        <div class="swatch-stack">
+          <div data-name="Horizonte"   style="background:#a17a4a"></div>
+          <div data-name="San Pietro"  style="background:#cfa874"></div>
+          <div data-name="Malta"       style="background:#7a5a36"></div>
+          <div data-name="Rustic White" style="background:#e8dec6"></div>
+        </div>
+      </div>
+      <div class="facade-meta">
+        <div>
+          <div class="kicker">Woodimate</div>
+          <h3>Bois aggloméré, 18 &amp; 22 mm.</h3>
+          <p>Une finition bois économique et polyvalente. Le 18 mm est léger et facile à poser, le 22 mm apporte robustesse et meilleure isolation pour les structures exigeantes.</p>
+          <div class="chips">
+            <span class="chip">Horizonte</span><span class="chip">Rustic Tabac</span>
+            <span class="chip">San Pietro</span><span class="chip">Malta</span>
+            <span class="chip">San Marino</span><span class="chip">Garden Oak</span>
+          </div>
+        </div>
+        <a href="#" class="arrow">Voir la famille</a>
+      </div>
+    </article>
+
+    <article class="facade" data-reveal>
+      <div class="facade-cover">
+        <div class="swatch-stack">
+          <div data-name="Black"     style="background:#15161a"></div>
+          <div data-name="Latte"     style="background:#c9b69a"></div>
+          <div data-name="Ice Gris"  style="background:#bcc1c5"></div>
+          <div data-name="Cooper"    style="background:#9c673d"></div>
+        </div>
+      </div>
+      <div class="facade-meta">
+        <div>
+          <div class="kicker">Woodipro &amp; Woodimp</div>
+          <h3>Finitions brillantes et mates, hautes performances.</h3>
+          <p>Woodipro 18 mm — surface brillante et raffinée qui illumine l'espace. Woodimp 22 mm — version mate, sobre et résistante, pour des projets exigeants.</p>
+          <div class="chips">
+            <span class="chip">Antracite</span><span class="chip">Luna</span>
+            <span class="chip">Cashemere</span><span class="chip">Arctic White</span>
+            <span class="chip">Silver Leaf</span><span class="chip">Zirkon</span>
+          </div>
+        </div>
+        <a href="#" class="arrow">Voir la famille</a>
+      </div>
+    </article>
+
+    <article class="facade" data-reveal>
+      <div class="facade-cover">
+        <div class="swatch-stack">
+          <div data-name="Catania"   style="background:#3d5240"></div>
+          <div data-name="Florencia" style="background:#cfb89a"></div>
+          <div data-name="Brecia"    style="background:#7d6450"></div>
+          <div data-name="Mesina"    style="background:#1f2a3a"></div>
+        </div>
+      </div>
+      <div class="facade-meta">
+        <div>
+          <div class="kicker">Façades Laque</div>
+          <h3>Cinq couches de peinture, fini main.</h3>
+          <p>Chaque façade laquée bénéficie d'un processus minutieux : 5 couches de peinture soigneusement appliquées pour une finition uniforme, durable et résistante.</p>
+          <div class="chips">
+            <span class="chip">Catania</span><span class="chip">Latina</span>
+            <span class="chip">Sicilia</span><span class="chip">Florencia</span>
+            <span class="chip">Foggia</span><span class="chip">Verona</span>
+          </div>
+        </div>
+        <a href="#" class="arrow">Voir la famille</a>
+      </div>
+    </article>
+
+    <article class="facade" data-reveal>
+      <div class="facade-cover">
+        <div class="swatch-stack">
+          <div data-name="Chêne Naturel" style="background:#b58c5d"></div>
+          <div data-name="Chêne Tabac"   style="background:#6c4828"></div>
+          <div data-name="Noyer Carini"  style="background:#3a261a"></div>
+          <div data-name="Chêne Blanc"   style="background:#d9c4a4"></div>
+        </div>
+      </div>
+      <div class="facade-meta">
+        <div>
+          <div class="kicker">Façades Egger</div>
+          <h3>L'excellence autrichienne en panneaux structurés.</h3>
+          <p>Façades reconnues pour leur résistance exceptionnelle aux rayures, aux impacts et à l'humidité. Textures bois authentiques et surfaces mates élégantes.</p>
+          <div class="chips">
+            <span class="chip">Chêne Naturel</span><span class="chip">Chêne Tabac</span>
+            <span class="chip">Chêne Sherman</span><span class="chip">Noyer Lincoln</span>
+            <span class="chip">Noyer Bourge</span>
+          </div>
+        </div>
+        <a href="#" class="arrow">Voir la famille</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- Logo divider accent -->
+<div class="section-divider" aria-hidden="true">
+  <div class="logo-mark"></div>
+</div>
+
+<!-- ============================== COULEURS WALL ============================== -->
+<section class="couleurs" id="couleurs" data-screen-label="05 couleurs">
+  <div class="section-head">
+    <div class="section-num" data-reveal>05 — Palette</div>
+    <h2 class="section-title" data-reveal>Un mur de <em>couleurs</em>, soigneusement choisies.</h2>
+  </div>
+  <p class="couleurs-intro" data-reveal>
+    Plus de 60 teintes intemporelles, déclinées en bleu, vert, gris, rouge et neutres.
+    Chaque pigment est sélectionné pour vieillir avec grâce et s'accorder aux matières
+    naturelles — bois, pierre, métal.
+  </p>
+
+  <div class="color-family" data-reveal>
+    <div class="family-head">
+      <span class="label">Famille 01</span>
+      <h4>Bleus</h4>
+      <span class="count">09 teintes</span>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#2a3650"><span class="name">Indigo</span></div>
+      <div class="swatch" style="background:#13223a"><span class="name">Profond</span></div>
+      <div class="swatch" style="background:#0c1726"><span class="name">Nuit</span></div>
+      <div class="swatch" style="background:#23477a"><span class="name">Outremer</span></div>
+      <div class="swatch" style="background:#3666a3"><span class="name">Delft</span></div>
+      <div class="swatch" style="background:#4a6c93"><span class="name">Denim</span></div>
+      <div class="swatch" style="background:#86a7c4"><span class="name">Horizon</span></div>
+      <div class="swatch light" style="background:#b9d0e0"><span class="name">Glacier</span></div>
+      <div class="swatch light" style="background:#d2dce1"><span class="name">Brume</span></div>
+    </div>
+  </div>
+
+  <div class="color-family" data-reveal>
+    <div class="family-head">
+      <span class="label">Famille 02</span>
+      <h4>Verts</h4>
+      <span class="count">05 teintes</span>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#1e2e1f"><span class="name">Foncé</span></div>
+      <div class="swatch" style="background:#2c4530"><span class="name">Sapin</span></div>
+      <div class="swatch" style="background:#3d5240"><span class="name">Minéral</span></div>
+      <div class="swatch" style="background:#7e9a7e"><span class="name">Eucalyptus</span></div>
+      <div class="swatch" style="background:#a4bba0"><span class="name">Fjord</span></div>
+    </div>
+  </div>
+
+  <div class="color-family" data-reveal>
+    <div class="family-head">
+      <span class="label">Famille 03</span>
+      <h4>Gris &amp; neutres</h4>
+      <span class="count">10 teintes</span>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#1a1b1c"><span class="name">Noir</span></div>
+      <div class="swatch" style="background:#2e2e30"><span class="name">Carbone</span></div>
+      <div class="swatch" style="background:#3d3e40"><span class="name">Onyx</span></div>
+      <div class="swatch" style="background:#5b5d5f"><span class="name">Macadam</span></div>
+      <div class="swatch" style="background:#7a7264"><span class="name">Cubanite</span></div>
+      <div class="swatch" style="background:#8a8474"><span class="name">Argile</span></div>
+      <div class="swatch" style="background:#b6ad9a"><span class="name">Cachemire</span></div>
+      <div class="swatch light" style="background:#cfc8b8"><span class="name">Angora</span></div>
+      <div class="swatch light" style="background:#e3dccb"><span class="name">Cristal</span></div>
+      <div class="swatch light" style="background:#efe9dc"><span class="name">Albâtre</span></div>
+    </div>
+  </div>
+
+  <div class="color-family" data-reveal>
+    <div class="family-head">
+      <span class="label">Famille 04</span>
+      <h4>Rouges &amp; chauds</h4>
+      <span class="count">06 teintes</span>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#5a1f1f"><span class="name">Grenat</span></div>
+      <div class="swatch" style="background:#6e2828"><span class="name">Bordeaux</span></div>
+      <div class="swatch" style="background:#a23a2c"><span class="name">Cerise</span></div>
+      <div class="swatch" style="background:#c8754a"><span class="name">Nude</span></div>
+      <div class="swatch" style="background:#d99767"><span class="name">Abricot</span></div>
+      <div class="swatch" style="background:#dcb56a"><span class="name">Tournesol</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PLANS DE TRAVAIL ============================== -->
+<section class="worktops" id="plans" data-screen-label="06 plans">
+  <div class="section-head">
+    <div class="section-num" data-reveal>06 — Plans de travail</div>
+    <h2 class="section-title" data-reveal>Quartz, céramique, bois — le cœur de la cuisine.</h2>
+  </div>
+
+  <div class="worktops-grid">
+    <article class="worktop-card" data-reveal>
+      <div>
+        <div class="kicker">Matériau 01</div>
+        <h3>Quartz</h3>
+      </div>
+      <div class="preview"><div class="layer" style="background-image: url('assets/quartz.jpg'); background-size: cover; background-position: center;"></div></div>
+      <div>
+        <p>Surface non poreuse, résistante aux rayures et aux taches. Large palette de teintes contemporaines.</p>
+        <div class="finishes">
+          <span class="dot" style="background:#efe9dc"></span>
+          <span class="dot" style="background:#cdc4b0"></span>
+          <span class="dot" style="background:#2e2e30"></span>
+          <span class="dot" style="background:#8a8474"></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="worktop-card" data-reveal>
+      <div>
+        <div class="kicker">Matériau 02</div>
+        <h3>Céramique dekton et coverlam</h3>
+      </div>
+      <div class="preview"><div class="layer" style="background-image: url('assets/ceramic-plan.png'); background-size: cover; background-position: center;"></div></div>
+      <div>
+        <p>Résistance aux températures élevées, aux rayures et aux produits chimiques. Surface hygiénique et minimaliste.</p>
+        <div class="finishes">
+          <span class="dot" style="background:#1a1b1c"></span>
+          <span class="dot" style="background:#3a3a3e"></span>
+          <span class="dot" style="background:#86a7c4"></span>
+          <span class="dot" style="background:#e3dccb"></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="worktop-card" data-reveal>
+      <div>
+        <div class="kicker">Matériau 03</div>
+        <h3>Bois Egger</h3>
+      </div>
+      <div class="preview"><div class="layer" style="background-image: url('assets/egger-wood.png'); background-size: cover; background-position: center;"></div></div>
+      <div>
+        <p>Plans de travail en bois stratifié — chants postformés ou plaqués droits, finitions chêne et marbre.</p>
+        <div class="finishes">
+          <span class="dot" style="background:#b58c5d"></span>
+          <span class="dot" style="background:#6c4828"></span>
+          <span class="dot" style="background:#3a261a"></span>
+          <span class="dot" style="background:#d9c4a4"></span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================== PARTENAIRES ============================== -->
+<section class="partners" data-screen-label="07 partenaires">
+  <div class="partners-label" data-reveal>07 — Nos partenaires</div>
+  <div class="partners-row" data-reveal>
+    <div class="partner"><div>BLUM<small>Quincaillerie</small></div></div>
+    <div class="partner"><div>Egger<small>Façades &amp; plans</small></div></div>
+    <div class="partner"><div>Dossia<small>Portes laquées</small></div></div>
+    <div class="partner"><div>Bosch<small>Électroménager</small></div></div>
+    <div class="partner"><div>Smeg<small>Électroménager</small></div></div>
+    <div class="partner"><div>Liebherr<small>Froid</small></div></div>
+    <div class="partner"><div>Falmec<small>Hottes</small></div></div>
+    <div class="partner"><div>Teka<small>Cuisson</small></div></div>
+  </div>
+</section>
+
+<!-- ============================== CONTACT ============================== -->
+<section class="cta-block" id="contact" data-screen-label="08 contact">
+  <div class="section-num" data-reveal>08 — Discutons</div>
+  <div>
+    <h2 data-reveal>Êtes-vous prêt à<br/><em>transformer</em> votre intérieur ?</h2>
+    <div class="cta-row" data-reveal>
+      <a class="btn filled" href="mailto:unes.elgarti@gmail.com">Écrire à l'équipe</a>
+      <a class="btn" href="tel:+212600076274">Appeler maintenant</a>
+    </div>
+    <div class="contact-meta" data-reveal>
+      <div>
+        <div class="k">Email</div>
+        <div class="v" style="font-size: 26px">contact@ecocinacom.com</div>
+      </div>
+      <div>
+        <div class="k">Téléphone</div>
+        <div class="v" style="font-size: 26px; width: 2000px; line-height: 1">+212 6 45 63 32 43</div>
+      </div>
+      <div>
+        <div class="k">WhatsApp</div>
+        <div class="v" style="width: 230.74px; line-height: 1; font-size: 26px">+212 6 00 07 62 74</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Logo divider accent -->
+<div class="section-divider" aria-hidden="true">
+  <div class="logo-mark"></div>
+</div>
+
+<footer data-screen-label="09 footer">
+  <div>
+    <div>© 2026 Ecocina — Tous droits réservés</div>
+    <div style="margin-top:8px; opacity: 0.5;">Catalogue cuisines, dressings &amp; salles de bain</div>
+  </div>
+  <div class="logo-foot">Ecocina</div>
+  <div style="text-align:right;">
+    <div>MAROC · WhatsApp 06 00 07 62 74</div>
+    <div style="margin-top:8px; opacity: 0.5;">Mentions légales · Confidentialité</div>
+  </div>
+</footer>
+
+<!-- Three.js scenes -->
+<script type="module">
+  import { mountExplodedCaisson } from './exploded.js';
+
+  const expCtl = mountExplodedCaisson(document.getElementById('exploded-canvas'));
+
+  // Explode slider
+  const slider = document.getElementById('explode');
+  slider.addEventListener('input', (e) => {
+    expCtl.setProgress(parseFloat(e.target.value) / 100);
+  });
+
+  // Caissons tabs
+  const cardData = {
+    hydro: {
+      title: 'Caissons hydrofuges',
+      body: "Conçus pour offrir une résistance optimale à l'humidité, ces caissons sont essentiels dans les espaces soumis aux projections d'eau comme les cuisines et les salles de bain. Un traitement spécifique empêche l'absorption d'eau et évite les déformations.",
+      specs: [
+        ['Panneau', 'STD hydrofuge 18 mm'],
+        ['Chants', 'PVC ABS 1 mm posé à chaud'],
+        ['Fond', 'Mélaminé 8 mm, assemblage rainuré'],
+        ['Tablette', 'Réglable sur taquets métalliques'],
+        ['Garantie', '10 ans structure'],
+      ]
+    },
+    normal: {
+      title: 'Caissons 16 mm',
+      body: "Solution prisée dans les projets contractuels nécessitant un équilibre optimal entre qualité, durabilité et coût. Robustes et adaptables, ils se déclinent en finitions et configurations multiples pour cuisines collectives, résidentielles ou commerciales.",
+      specs: [
+        ['Panneau', 'Mélaminé 16 mm'],
+        ['Chants', 'ABS 0.6 mm'],
+        ['Fond', 'Mélaminé 5 mm'],
+        ['Tablette', 'Réglable sur taquets'],
+        ['Application', 'Contractuel · résidentiel'],
+      ]
+    }
+  };
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const variant = btn.dataset.variant;
+      const d = cardData[variant];
+      document.getElementById('cais-title').textContent = d.title;
+      document.getElementById('cais-body').textContent = d.body;
+      const list = document.getElementById('cais-specs');
+      list.innerHTML = '';
+      d.specs.forEach(([k, v]) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="k">${k}</span><span class="v">${v}</span>`;
+        list.appendChild(li);
+      });
+      // Switch cabinet configuration with premium dissolve effect
+      expCtl.switchConfiguration(variant);
+    });
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  // Hero video timecode
+  const tc = document.getElementById('tc');
+  const heroVid = document.querySelector('.hero-video');
+  if (tc && heroVid) {
+    const fmt = (s) => {
+      const m = Math.floor(s / 60).toString().padStart(2,'0');
+      const ss = Math.floor(s % 60).toString().padStart(2,'0');
+      const ff = Math.floor((s % 1) * 24).toString().padStart(2,'0');
+      return `${m}:${ss}:${ff}`;
+    };
+    const tick = () => {
+      tc.textContent = fmt(heroVid.currentTime || 0);
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    heroVid.muted = true;
+    heroVid.play().catch(() => {
+      document.addEventListener('click', () => heroVid.play().catch(()=>{}), { once: true });
+    });
+  }
+</script>
+
+</body>
+</html>
