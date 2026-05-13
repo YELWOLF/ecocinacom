@@ -1,0 +1,1732 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#f3eee3" />
+<title>Ecocina — Cuisines, dressings & salles de bain sur mesure · Maroc</title>
+<meta name="description" content="Ecocina conçoit, fabrique et pose des cuisines, dressings et salles de bain sur mesure. Caissons hydrofuges, façades premium, plans en quartz et céramique. Devis gratuit en 48 h." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   Ecocina — redesign v2
+   Mobile-first, system-driven. No gimmicks.
+   ============================================================ */
+
+:root {
+  /* palette — kept brand DNA, refined for AA contrast */
+  --bg:        #f5f1e8;      /* warm cream, lifted */
+  --bg-2:      #ece6d6;
+  --bg-3:      #e1d9c4;
+  --paper:     #fbf8f1;
+  --ink:       #1a1a1b;
+  --ink-soft:  #3d3c38;
+  --ink-mute:  #6b665b;
+  --line:      #d6cdb6;
+  --line-soft: #e6dfcd;
+  --accent:    #3d5240;      /* forest */
+  --accent-dk: #2a3a2c;
+  --warm:      #b87340;      /* terracotta, used sparingly */
+  --ok:        #3d5240;
+
+  /* type */
+  --display:   'Cormorant Garamond', 'Times New Roman', serif;
+  --sans:      'Manrope', system-ui, -apple-system, sans-serif;
+  --mono:      'JetBrains Mono', ui-monospace, monospace;
+
+  /* type scale — fluid, mobile-first */
+  --t-eyebrow: 11px;
+  --t-body:    16px;
+  --t-lead:    clamp(18px, 1.4vw + 12px, 22px);
+  --t-h4:      clamp(22px, 1.6vw + 14px, 28px);
+  --t-h3:      clamp(28px, 2.4vw + 16px, 44px);
+  --t-h2:      clamp(36px, 4.2vw + 14px, 76px);
+  --t-h1:      clamp(44px, 6vw + 16px, 104px);
+  --t-num:     clamp(36px, 3.6vw + 12px, 56px);
+
+  /* spacing — strict 8pt rhythm */
+  --s-1: 8px;
+  --s-2: 16px;
+  --s-3: 24px;
+  --s-4: 32px;
+  --s-5: 48px;
+  --s-6: 64px;
+  --s-7: 88px;
+  --s-8: 120px;
+  --gap-sm: 16px;
+  --gap-md: 24px;
+  --gap-lg: 32px;
+  --pad-x: clamp(16px, 4vw, 64px);
+  --pad-y: clamp(48px, 8vw, 128px);
+
+  /* layout */
+  --maxw: 1400px;
+  --radius: 2px;
+  --radius-lg: 12px;
+  --nav-h: 68px;
+
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --shadow-1: 0 1px 2px rgba(20,18,12,.04), 0 4px 16px rgba(20,18,12,.04);
+  --shadow-2: 0 8px 40px rgba(20,18,12,.08), 0 2px 6px rgba(20,18,12,.04);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body { overflow-x: hidden; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+::selection { background: var(--accent); color: var(--paper); }
+
+/* Reusable primitives -------------------------------------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--pad-x); padding-right: var(--pad-x); }
+section { padding-top: var(--gap-md); padding-bottom: var(--gap-md); }
+@media (min-width: 640px) { section { padding-top: var(--pad-y); padding-bottom: var(--pad-y); } }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: var(--t-eyebrow);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; opacity: .6; }
+.eyebrow.solo::before { display: none; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; margin: 0; letter-spacing: -0.012em; line-height: 1.05; }
+h1 em, h2 em, h3 em { font-style: italic; color: var(--accent); font-weight: 400; }
+p { margin: 0; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 22px;
+  font-family: var(--sans);
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 0.02em;
+  background: var(--ink); color: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease), border-color .25s var(--ease);
+  min-height: 48px;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--paper); }
+.btn.wa { background: #16a34a; border-color: #16a34a; }
+.btn.wa:hover { background: #128a3e; border-color: #128a3e; }
+.btn .arrow { transition: transform .25s var(--ease); }
+.btn:hover .arrow { transform: translateX(3px); }
+
+.divider { height: 1px; background: var(--line-soft); border: 0; margin: 0; }
+
+/* ==========================================================
+   NAV
+   ========================================================== */
+.nav {
+  position: sticky; top: 0; z-index: 80;
+  background: rgba(245, 241, 232, 0.85);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s var(--ease), background .3s var(--ease);
+}
+.nav.is-scrolled { border-bottom-color: var(--line-soft); background: rgba(245,241,232,0.96); }
+.nav-inner {
+  height: var(--nav-h);
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--s-4);
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; }
+.brand-mark {
+  width: 32px; height: 32px;
+  background: url('assets/ecocina-logo.png') center/contain no-repeat;
+}
+.brand-name { font-family: var(--display); font-size: 22px; font-weight: 500; letter-spacing: 0.01em; }
+.nav-links { display: none; gap: var(--s-4); align-items: center; }
+.nav-links a {
+  font-size: 14px; font-weight: 500;
+  color: var(--ink-soft);
+  position: relative;
+  padding: 6px 0;
+  transition: color .2s var(--ease);
+}
+.nav-links a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 1px; background: var(--ink);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s var(--ease);
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta { display: none; align-items: center; gap: var(--s-2); }
+.nav-cta .btn { padding: 10px 18px; min-height: 40px; }
+
+/* mobile menu button */
+.menu-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; padding: 0;
+  background: transparent; border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.menu-btn svg { width: 18px; height: 18px; }
+
+/* mobile drawer */
+.drawer {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 100;
+  transform: translateY(-100%);
+  transition: transform .45s var(--ease);
+  display: flex; flex-direction: column;
+  visibility: hidden;
+}
+.drawer.open { transform: translateY(0); visibility: visible; }
+.drawer-head {
+  height: var(--nav-h);
+  padding: 0 var(--pad-x);
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--line-soft);
+}
+.drawer-body {
+  flex: 1;
+  padding: var(--s-5) var(--pad-x) var(--s-6);
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.drawer-body a {
+  font-family: var(--display);
+  font-size: clamp(32px, 8vw, 48px);
+  font-weight: 400;
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--line-soft);
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--ink);
+}
+.drawer-body a::after { content: "→"; font-family: var(--sans); font-size: 18px; color: var(--ink-mute); }
+.drawer-foot {
+  padding: var(--s-4) var(--pad-x);
+  display: grid; gap: var(--s-2);
+  border-top: 1px solid var(--line-soft);
+}
+.drawer-foot .btn { justify-content: center; }
+
+@media (min-width: 880px) {
+  .nav-links { display: flex; }
+  .nav-cta { display: inline-flex; }
+  .menu-btn { display: none; }
+}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+.hero {
+  position: relative;
+  padding-top: var(--s-6);
+  padding-bottom: 0;
+}
+.hero-grid {
+  display: grid; gap: var(--s-5);
+  grid-template-columns: 1fr;
+  align-items: end;
+}
+.hero-copy {
+  padding-bottom: var(--s-5);
+  max-width: 720px;
+}
+.hero h1 {
+  font-size: var(--t-h1);
+  margin-top: var(--s-4);
+  text-wrap: balance;
+}
+.hero-sub {
+  margin-top: var(--s-4);
+  font-size: var(--t-lead);
+  color: var(--ink-soft);
+  max-width: 52ch;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.hero-ctas {
+  display: flex; flex-wrap: wrap; gap: var(--s-2);
+  margin-top: var(--s-5);
+}
+.hero-meta {
+  margin-top: var(--s-5);
+  display: flex; flex-wrap: wrap; gap: var(--s-4) var(--s-5);
+}
+.hero-meta .item { display: flex; flex-direction: column; gap: 2px; }
+.hero-meta .v { font-family: var(--display); font-size: var(--t-num); font-weight: 500; line-height: 1; letter-spacing: -0.01em; }
+.hero-meta .k {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.hero-art {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--bg-3);
+  box-shadow: var(--shadow-2);
+}
+.hero-art img, .hero-art video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover;
+}
+.hero-tag {
+  position: absolute; left: 16px; bottom: 16px;
+  padding: 8px 14px;
+  background: rgba(26,26,27,0.75);
+  backdrop-filter: blur(8px);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  border-radius: 999px;
+}
+@media (min-width: 880px) {
+  .hero { padding-top: var(--s-7); }
+  .hero-grid { grid-template-columns: 1fr 1fr; gap: var(--s-6); align-items: center; }
+  .hero-copy { padding-bottom: 0; }
+  .hero-art { aspect-ratio: 4 / 5; }
+}
+@media (min-width: 1100px) {
+  .hero-grid { grid-template-columns: 1.05fr 1fr; gap: var(--s-7); }
+  .hero-art { aspect-ratio: 5 / 6; }
+}
+
+/* ==========================================================
+   TRUST STRIP (logos + small line)
+   ========================================================== */
+.trust {
+  padding: var(--s-5) var(--pad-x);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--bg);
+}
+.trust-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  display: grid; gap: var(--s-3);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+.trust-label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.trust-logos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-2) var(--s-3);
+  align-items: center;
+}
+.trust-logos .lg {
+  font-family: var(--display); font-size: 20px; font-weight: 500;
+  color: var(--ink-soft);
+  text-align: center;
+  letter-spacing: 0.01em;
+  padding: var(--s-2) 0;
+  opacity: .75;
+}
+@media (min-width: 640px) {
+  .trust-logos { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 980px) {
+  .trust-inner { grid-template-columns: 240px 1fr; gap: var(--s-5); }
+  .trust-logos { grid-template-columns: repeat(8, 1fr); }
+  .trust-logos .lg { font-size: 22px; }
+}
+
+/* ==========================================================
+   SECTION HEAD
+   ========================================================== */
+.shead {
+  display: grid; grid-template-columns: 1fr; gap: var(--s-3);
+  margin-bottom: var(--s-6);
+  align-items: end;
+}
+.shead h2 { font-size: var(--t-h2); text-wrap: balance; max-width: 18ch; }
+.shead .lede {
+  font-size: var(--t-lead);
+  color: var(--ink-soft);
+  max-width: 52ch;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+@media (min-width: 880px) {
+  .shead { grid-template-columns: 1.4fr 1fr; gap: var(--s-6); }
+}
+
+/* ==========================================================
+   SERVICES (Cuisines / Dressings / Salles de bain)
+   ========================================================== */
+.services { background: var(--bg); }
+.services-grid {
+  display: grid; gap: var(--s-3);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.service {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+.service:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); }
+.service-art {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-3);
+  position: relative;
+  overflow: hidden;
+}
+.service-art .ph {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.04) 0 1px, transparent 1px 14px);
+}
+.service-art.k1 .ph { background-color: #2a2a2c; }
+.service-art.k2 .ph { background-color: #b58c5d; }
+.service-art.k3 .ph { background-color: #d9d3c5; }
+.service-art.k1 { background-image: linear-gradient(135deg, #2c2c30, #4a4a50 55%, #2a2a2e); }
+.service-art.k2 { background-image: linear-gradient(135deg, #b08254, #845f3a 60%, #4f3a25); }
+.service-art.k3 { background-image: linear-gradient(135deg, #ece4d2, #c9bea4 60%, #a89c7e); }
+.service-art .lab {
+  position: absolute; left: 14px; top: 14px;
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+}
+.service-body { padding: var(--s-4); flex: 1; display: flex; flex-direction: column; gap: var(--s-2); }
+.service-body h3 { font-size: var(--t-h3); }
+.service-body p { font-size: 15px; color: var(--ink-soft); line-height: 1.5; }
+.service-body .more {
+  margin-top: auto; padding-top: var(--s-3);
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); display: inline-flex; align-items: center; gap: 8px;
+}
+.service-body .more::after { content: "→"; font-family: var(--sans); }
+
+/* ==========================================================
+   MANIFESTO
+   ========================================================== */
+.manifesto {
+  background: var(--accent);
+  color: var(--paper);
+}
+.manifesto h2 { color: var(--paper); font-size: var(--t-h2); max-width: 18ch; }
+.manifesto h2 em { color: #d9c4a4; }
+.manifesto .lede { color: rgba(251, 248, 241, 0.82); }
+.manifesto-pillars {
+  margin-top: var(--s-6);
+  display: grid; gap: var(--s-3);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) { .manifesto-pillars { grid-template-columns: repeat(3, 1fr); } }
+.pillar {
+  padding: var(--s-4);
+  border: 1px solid rgba(251,248,241,0.18);
+  border-radius: var(--radius-lg);
+  background: rgba(0,0,0,0.10);
+}
+.pillar .num {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em;
+  color: rgba(251,248,241,0.6); margin-bottom: var(--s-3);
+}
+.pillar h4 { color: var(--paper); font-size: var(--t-h4); margin-bottom: var(--s-2); }
+.pillar p { color: rgba(251,248,241,0.78); font-size: 15px; line-height: 1.55; }
+
+/* ==========================================================
+   BUILD QUALITY (caissons + materials)
+   ========================================================== */
+.build { background: var(--bg-2); }
+.build-grid { display: grid; gap: var(--s-4); grid-template-columns: 1fr; }
+@media (min-width: 980px) { .build-grid { grid-template-columns: 1.2fr 1fr; gap: var(--s-6); align-items: start; } }
+
+.build-visual {
+  aspect-ratio: 5 / 4;
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+}
+.diagram { position: absolute; inset: 0; padding: 8%; }
+.diagram svg { width: 100%; height: 100%; }
+.dgrid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(20,20,20,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20,20,20,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.dlabel {
+  position: absolute;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-mute);
+  display: flex; align-items: center; gap: 8px;
+}
+.dlabel.l1 { top: 16%; left: 6%; }
+.dlabel.l2 { top: 42%; right: 6%; flex-direction: row-reverse; }
+.dlabel.l3 { bottom: 22%; left: 6%; }
+.dlabel.l4 { bottom: 10%; right: 6%; flex-direction: row-reverse; }
+.dlabel::before { content: ""; width: 32px; height: 1px; background: var(--ink-mute); }
+
+.build-info h3 { font-size: var(--t-h3); margin-bottom: var(--s-3); }
+.build-info p { color: var(--ink-soft); margin-bottom: var(--s-4); font-size: 16px; line-height: 1.6; }
+.spec-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); border-radius: var(--radius); overflow: hidden; }
+.spec-list li { display: grid; grid-template-columns: 110px 1fr; gap: var(--s-2); padding: 14px var(--s-3); background: var(--paper); font-size: 14px; }
+.spec-list .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); }
+.spec-list .v { color: var(--ink); }
+
+/* materials row */
+.materials {
+  margin-top: var(--s-6);
+  display: grid; gap: var(--gap-md);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .materials { grid-template-columns: repeat(2, 1fr); gap: var(--s-3); } }
+@media (min-width: 980px) { .materials { grid-template-columns: repeat(3, 1fr); } }
+.mat-card {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  border: 1px solid var(--line-soft);
+}
+.mat-art { aspect-ratio: 5 / 3; background-size: cover; background-position: center; }
+.mat-art.quartz   { background-image: url('assets/quartz.jpg'); }
+.mat-art.ceramic  { background-image: url('assets/ceramic-plan.png'); }
+.mat-art.wood     { background-image: url('assets/egger-wood.png'); }
+.mat-body { padding: var(--s-3) var(--s-4) var(--s-4); }
+.mat-body .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); }
+.mat-body h4 { font-size: var(--t-h4); margin: 6px 0 10px; }
+.mat-body p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+/* ==========================================================
+   FACADES / FINISHES
+   ========================================================== */
+.finishes { background: var(--bg); }
+.fam-grid {
+  display: grid; gap: var(--gap-md);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .fam-grid { grid-template-columns: 1fr 1fr; gap: var(--s-3); } }
+@media (min-width: 980px) { .fam-grid { gap: var(--s-4); } }
+.family {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: grid; grid-template-columns: 1fr; gap: 0;
+  border: 1px solid var(--line-soft);
+}
+@media (min-width: 540px) { .family { grid-template-columns: 1fr 1.1fr; } }
+.family-art {
+  aspect-ratio: 5 / 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.family-art > div {
+  position: relative;
+  display: flex; align-items: flex-end; padding: 12px;
+}
+.family-art > div span {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 1px 4px rgba(0,0,0,.45);
+}
+.family-art > .light span { color: rgba(0,0,0,0.85); text-shadow: none; }
+.family-body { padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); }
+.family-body .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); }
+.family-body h3 { font-size: var(--t-h3); }
+.family-body p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; flex: 1; }
+.family-body .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--s-2); }
+.family-body .chip {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  border: 1px solid var(--line); padding: 5px 9px; border-radius: 999px;
+  color: var(--ink-soft);
+}
+
+/* ==========================================================
+   COLOR WALL
+   ========================================================== */
+.palette { background: var(--ink); color: var(--paper); }
+.palette .shead h2 { color: var(--paper); }
+.palette .shead h2 em { color: #d9c4a4; }
+.palette .shead .lede { color: rgba(251,248,241,0.7); }
+.palette .eyebrow { color: rgba(251,248,241,0.55); }
+
+.fam {
+  display: grid; gap: var(--s-2);
+  margin-top: var(--s-5);
+  padding-top: var(--s-3);
+  border-top: 1px solid rgba(251,248,241,0.12);
+}
+.fam-head {
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3);
+}
+.fam-head h4 { font-size: var(--t-h4); color: var(--paper); }
+.fam-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(251,248,241,0.5); }
+.swatches {
+  display: grid; gap: 6px;
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (min-width: 640px) { .swatches { grid-template-columns: repeat(6, 1fr); } }
+@media (min-width: 980px) { .swatches { grid-template-columns: repeat(10, 1fr); } }
+.sw {
+  aspect-ratio: 4/5; position: relative; border-radius: 4px; overflow: hidden;
+  transition: transform .4s var(--ease);
+  cursor: default;
+}
+.sw:hover { transform: translateY(-3px); }
+.sw span {
+  position: absolute; left: 8px; bottom: 8px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  color: var(--paper); text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  opacity: 0; transition: opacity .25s var(--ease);
+}
+.sw:hover span { opacity: 1; }
+.sw.l span { color: var(--ink); text-shadow: none; }
+
+/* ==========================================================
+   PROCESS
+   ========================================================== */
+.process { background: var(--bg); }
+.steps {
+  display: grid; gap: var(--gap-md);
+  grid-template-columns: 1fr;
+  counter-reset: step;
+}
+@media (min-width: 640px) { .steps { grid-template-columns: repeat(2, 1fr); gap: var(--s-3); } }
+@media (min-width: 1100px) { .steps { grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); overflow: hidden; } }
+.step {
+  background: var(--paper);
+  padding: var(--s-4);
+  display: flex; flex-direction: column; gap: var(--s-2);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line-soft);
+  position: relative;
+  min-height: 240px;
+}
+@media (min-width: 1100px) { .step { border-radius: 0; border: 0; } }
+.step .num {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em;
+  color: var(--accent);
+}
+.step h4 { font-size: var(--t-h4); }
+.step p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; flex: 1; }
+.step .dur {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-mute);
+  padding-top: var(--s-2);
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ==========================================================
+   GALLERY / RÉALISATIONS
+   ========================================================== */
+.gallery { background: var(--bg-2); }
+.shots {
+  display: grid; gap: var(--gap-sm);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .shots {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 220px;
+  }
+  .shots .s1 { grid-column: span 4; grid-row: span 2; }
+  .shots .s2 { grid-column: span 2; grid-row: span 1; }
+  .shots .s3 { grid-column: span 2; grid-row: span 1; }
+  .shots .s4 { grid-column: span 3; grid-row: span 1; }
+  .shots .s5 { grid-column: span 3; grid-row: span 1; }
+}
+.shot {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 220px;
+  background: var(--bg-3);
+}
+.shot::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.45));
+}
+.shot .info {
+  position: absolute; left: 16px; right: 16px; bottom: 14px;
+  color: var(--paper);
+  display: flex; justify-content: space-between; align-items: end; gap: var(--s-2);
+}
+.shot .info .t { font-family: var(--display); font-size: 22px; font-weight: 500; }
+.shot .info .l { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85; }
+.shot.p1 { background: url('assets/hero.jpg') center/cover; }
+.shot.p2 { background-image: linear-gradient(135deg, #2c2c30, #45454a 60%, #2a2a2e); }
+.shot.p3 { background-image: linear-gradient(135deg, #b08254, #845f3a 60%, #4f3a25); }
+.shot.p4 { background-image: linear-gradient(135deg, #d9d3c5, #b9b09a 60%, #8f8675); }
+.shot.p5 { background-image: linear-gradient(135deg, #3d5240, #2a3a2c 60%, #1f2a20); }
+.shot .ph-label {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  pointer-events: none;
+}
+
+/* ==========================================================
+   TESTIMONIALS
+   ========================================================== */
+.kudos { background: var(--bg); }
+.kudos-grid {
+  display: grid; gap: var(--gap-md);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .kudos-grid { grid-template-columns: repeat(2, 1fr); gap: var(--s-3); } }
+@media (min-width: 980px) { .kudos-grid { grid-template-columns: repeat(3, 1fr); } }
+.quote {
+  background: var(--paper);
+  padding: var(--s-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line-soft);
+  display: flex; flex-direction: column; gap: var(--s-3);
+}
+.quote .stars { color: var(--warm); letter-spacing: 2px; font-size: 14px; }
+.quote blockquote {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  flex: 1;
+  text-wrap: pretty;
+}
+.quote-foot {
+  display: flex; align-items: center; gap: var(--s-2);
+  padding-top: var(--s-2);
+  border-top: 1px solid var(--line-soft);
+}
+.avatar {
+  width: 40px; height: 40px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 500;
+}
+.quote-foot .who { font-size: 14px; font-weight: 500; }
+.quote-foot .where { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--ink-mute); text-transform: uppercase; }
+
+/* ==========================================================
+   FAQ
+   ========================================================== */
+.faq { background: var(--bg-2); }
+.faq-grid {
+  display: grid; gap: var(--gap-lg);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .faq-grid { gap: var(--s-5); } }
+@media (min-width: 980px) { .faq-grid { grid-template-columns: 1fr 1.4fr; gap: var(--s-7); } }
+details.q {
+  border-top: 1px solid var(--line);
+  padding: var(--gap-md) 0;
+}
+@media (min-width: 640px) { details.q { padding: var(--s-3) 0; } }
+details.q:last-of-type { border-bottom: 1px solid var(--line); }
+details.q summary {
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: var(--s-3);
+  cursor: pointer;
+  font-family: var(--display);
+  font-size: clamp(20px, 1.6vw + 12px, 26px);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.25;
+}
+details.q summary::-webkit-details-marker { display: none; }
+details.q summary .ic {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--sans); font-size: 18px; line-height: 1;
+  color: var(--ink-soft);
+  transition: transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
+}
+details.q[open] summary .ic { transform: rotate(45deg); background: var(--ink); color: var(--paper); border-color: var(--ink); }
+details.q .ans {
+  padding-top: var(--s-2);
+  padding-right: 48px;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   SHOWROOM + CONTACT
+   ========================================================== */
+.visit { background: var(--bg); }
+.visit-grid {
+  display: grid; gap: var(--gap-lg);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .visit-grid { gap: var(--s-4); } }
+@media (min-width: 980px) { .visit-grid { grid-template-columns: 1fr 1fr; gap: var(--s-6); } }
+
+.showroom {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  display: flex; flex-direction: column;
+}
+.showroom-map {
+  aspect-ratio: 4/3;
+  background:
+    radial-gradient(circle at 60% 45%, rgba(61,82,64,0.15), transparent 40%),
+    repeating-linear-gradient(0deg, rgba(20,18,12,0.03) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(90deg, rgba(20,18,12,0.03) 0 1px, transparent 1px 24px),
+    var(--bg-2);
+  position: relative;
+}
+.pin {
+  position: absolute; left: 60%; top: 45%;
+  width: 28px; height: 28px; border-radius: 999px;
+  background: var(--accent);
+  border: 4px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--accent), 0 6px 18px rgba(61,82,64,0.4);
+  transform: translate(-50%, -50%);
+}
+.pin::before, .pin::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  animation: ping 2.4s ease-out infinite;
+}
+.pin::after { animation-delay: 1.2s; }
+@keyframes ping { 0% { width: 28px; height: 28px; opacity: .6; } 100% { width: 90px; height: 90px; opacity: 0; } }
+
+.showroom-info { padding: var(--gap-md); display: grid; gap: var(--gap-md); }
+@media (min-width: 640px) { .showroom-info { padding: var(--s-4); gap: var(--s-3); } }
+.showroom-info h3 { font-size: var(--t-h3); }
+.showroom-info .row { display: grid; grid-template-columns: 80px 1fr; gap: var(--gap-sm); padding-top: var(--gap-sm); border-top: 1px solid var(--line-soft); font-size: 14px; }
+@media (min-width: 640px) { .showroom-info .row { grid-template-columns: 100px 1fr; gap: var(--s-2); padding-top: var(--s-2); } }
+.showroom-info .row .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); }
+.showroom-info .row .v { color: var(--ink); }
+.showroom-info .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--gap-sm); }
+
+/* form */
+.form {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line-soft);
+  padding: var(--gap-md);
+  display: grid; gap: var(--gap-md);
+}
+@media (min-width: 640px) { .form { padding: var(--s-4); gap: var(--s-3); } }
+.form h3 { font-size: var(--t-h3); }
+.form .lede { color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
+.field { display: grid; gap: 6px; }
+.field label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); }
+.field input, .field select, .field textarea {
+  font: inherit;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  color: var(--ink);
+  min-height: 44px;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+  width: 100%;
+}
+@media (min-width: 640px) { .field input, .field select, .field textarea { min-height: 48px; } }
+.field textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); background: var(--paper); }
+.field-row { display: grid; gap: var(--gap-sm); grid-template-columns: 1fr; }
+@media (min-width: 640px) { .field-row { grid-template-columns: 1fr 1fr; gap: var(--s-2); } }
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.consent input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; }
+.form-actions { display: flex; gap: var(--gap-sm); align-items: center; flex-wrap: wrap; }
+@media (min-width: 640px) { .form-actions { gap: var(--s-2); } }
+.form-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); }
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+footer {
+  background: var(--ink);
+  color: rgba(251,248,241,0.7);
+  padding: var(--gap-lg) var(--pad-x) var(--gap-md);
+}
+@media (min-width: 640px) { footer { padding: var(--s-6) var(--pad-x) var(--s-4); } }
+.foot-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  display: grid; gap: var(--gap-md);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .foot-inner { gap: var(--s-5); } }
+@media (min-width: 980px) { .foot-inner { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--s-5); } }
+.foot-brand { display: flex; flex-direction: column; gap: var(--gap-sm); }
+.foot-brand .name { font-family: var(--display); font-size: 36px; color: var(--paper); line-height: 1; }
+.foot-brand p { font-size: 13px; color: rgba(251,248,241,0.6); line-height: 1.55; max-width: 36ch; }
+.foot-col h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(251,248,241,0.5); margin: 0 0 var(--gap-sm); font-weight: 500; }
+@media (min-width: 640px) { .foot-col h5 { margin: 0 0 var(--s-2); } }
+.foot-col a, .foot-col span { display: block; padding: 6px 0; font-size: 14px; color: rgba(251,248,241,0.82); }
+.foot-col a:hover { color: var(--paper); }
+.foot-bottom {
+  max-width: var(--maxw); margin: 0 auto;
+  margin-top: var(--gap-lg); padding-top: var(--gap-md);
+  border-top: 1px solid rgba(251,248,241,0.12);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--gap-sm);
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(251,248,241,0.45);
+}
+@media (min-width: 640px) { .foot-bottom { margin-top: var(--s-5); padding-top: var(--s-3); gap: var(--s-2); } }
+
+/* reveal on scroll */
+[data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+[data-reveal].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* sticky mobile call bar */
+.callbar {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  z-index: 70;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  padding: 12px var(--pad-x);
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-sm);
+  box-shadow: 0 -8px 24px rgba(20,18,12,0.05);
+}
+.callbar .btn { width: 100%; justify-content: center; min-height: 44px; padding: 10px; font-size: 13px; }
+@media (min-width: 880px) { .callbar { display: none; } body { padding-bottom: 0 !important; } }
+
+/* offset for sticky bar on mobile */
+@media (max-width: 879px) {
+  body { padding-bottom: 72px; }
+}
+
+/* floating WhatsApp button (desktop) */
+.floating-wa {
+  position: fixed; bottom: 32px; right: 32px;
+  z-index: 60;
+  width: 56px; height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  text-decoration: none;
+  color: white;
+}
+.floating-wa:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+@media (max-width: 879px) { .floating-wa { display: none; } }
+</style>
+</head>
+<body>
+
+<!-- =========== NAV =========== -->
+<nav class="nav" data-screen-label="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Ecocina">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <span class="brand-name">Ecocina</span>
+    </a>
+    <div class="nav-links" role="menubar">
+      <a href="#services">Cuisines</a>
+      <a href="#services">Dressings</a>
+      <a href="#services">Salles de bain</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#process">Notre démarche</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn ghost" href="tel:+212645633243" aria-label="Appeler Ecocina">06 45 63 32 43</a>
+      <a class="btn" href="#contact">Prendre rendez-vous <span class="arrow">→</span></a>
+    </div>
+    <button class="menu-btn" id="menuOpen" aria-label="Ouvrir le menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- mobile drawer -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <a class="brand" href="#top">
+      <div class="brand-mark"></div>
+      <span class="brand-name">Ecocina</span>
+    </a>
+    <button class="menu-btn" id="menuClose" aria-label="Fermer le menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body">
+    <a href="#services">Cuisines</a>
+    <a href="#services">Dressings</a>
+    <a href="#services">Salles de bain</a>
+    <a href="#realisations">Réalisations</a>
+    <a href="#process">Notre démarche</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="drawer-foot">
+    <a class="btn" href="#contact">Prendre rendez-vous</a>
+    <a class="btn wa" href="https://wa.me/212600076274">WhatsApp · 06 00 07 62 74</a>
+  </div>
+</div>
+
+<!-- =========== HERO =========== -->
+<header class="hero wrap" id="top" data-screen-label="01 hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Cuisines · Dressings · Salles de bain · Maroc</span>
+      <h1>Votre cuisine,<br/>conçue <em>pour durer.</em></h1>
+      <p class="hero-sub">
+        Ecocina dessine, fabrique et pose des espaces sur mesure&nbsp;: caissons hydrofuges,
+        façades laquées, plans en quartz et céramique. De la première visite à la pose,
+        un seul interlocuteur — un seul standard&nbsp;: la précision.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn" href="#contact">Devis gratuit en 48&nbsp;h <span class="arrow">→</span></a>
+        <a class="btn ghost" href="#realisations">Voir les réalisations</a>
+      </div>
+      <div class="hero-meta">
+        <div class="item">
+          <span class="v">10<small style="font-size:.5em; color: var(--ink-mute); font-family: var(--sans);">ans</small></span>
+          <span class="k">Garantie structure</span>
+        </div>
+        <div class="item">
+          <span class="v">48 h</span>
+          <span class="k">Devis chiffré</span>
+        </div>
+        <div class="item">
+          <span class="v">300+</span>
+          <span class="k">Projets livrés</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="assets/hero.jpg" alt="Cuisine signature Ecocina — esquisse et photoréaliste" />
+      <div class="hero-tag">Cuisine signature · Casablanca</div>
+    </div>
+  </div>
+</header>
+
+<!-- =========== TRUST STRIP =========== -->
+<div class="trust" data-screen-label="trust">
+  <div class="trust-inner">
+    <div class="trust-label">Partenaires premium — quincaillerie, finitions, électroménager</div>
+    <div class="trust-logos" aria-label="Marques partenaires">
+      <div class="lg">BLUM</div>
+      <div class="lg">Egger</div>
+      <div class="lg">Dossia</div>
+      <div class="lg">Bosch</div>
+      <div class="lg">Smeg</div>
+      <div class="lg">Liebherr</div>
+      <div class="lg">Falmec</div>
+      <div class="lg">Teka</div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== SERVICES =========== -->
+<section class="services wrap" id="services" data-screen-label="02 services">
+  <div class="shead">
+    <div>
+      <span class="eyebrow" data-reveal>02 — Nos métiers</span>
+      <h2 data-reveal style="margin-top: var(--s-3)">Trois espaces, une même <em>exigence.</em></h2>
+    </div>
+    <p class="lede" data-reveal>
+      Nous traitons chaque pièce comme un meuble sur mesure&nbsp;: relevé millimétré,
+      plan 3D, matériaux choisis avec vous, pose par notre atelier. Aucun sous-traitant.
+    </p>
+  </div>
+
+  <div class="services-grid">
+    <article class="service" data-reveal>
+      <div class="service-art k1">
+        <div class="ph"></div>
+        <span class="lab">Cuisines</span>
+      </div>
+      <div class="service-body">
+        <h3>Cuisines</h3>
+        <p>Linéaires, parallèles, en U ou avec îlot. Caissons hydrofuges, façades 18&nbsp;ou&nbsp;22&nbsp;mm, ferrures BLUM&nbsp;Tandembox, plans en quartz, céramique ou bois.</p>
+        <a class="more" href="#contact">Composer ma cuisine</a>
+      </div>
+    </article>
+
+    <article class="service" data-reveal>
+      <div class="service-art k2">
+        <div class="ph"></div>
+        <span class="lab">Dressings</span>
+      </div>
+      <div class="service-body">
+        <h3>Dressings</h3>
+        <p>Modules pleine hauteur, tiroirs à fermeture amortie, miroir intégré, éclairage&nbsp;LED. Optimisation cm par cm — même dans les sous-pentes et les angles.</p>
+        <a class="more" href="#contact">Composer mon dressing</a>
+      </div>
+    </article>
+
+    <article class="service" data-reveal>
+      <div class="service-art k3">
+        <div class="ph"></div>
+        <span class="lab">Salles de bain</span>
+      </div>
+      <div class="service-body">
+        <h3>Salles de bain</h3>
+        <p>Meubles vasque, colonnes suspendues, plans en céramique grand format. Tous nos panneaux sont hydrofuges, garantis contre le gonflement et la déformation.</p>
+        <a class="more" href="#contact">Composer ma salle de bain</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =========== MANIFESTO =========== -->
+<section class="manifesto wrap" data-screen-label="03 manifesto">
+  <div class="shead">
+    <div>
+      <span class="eyebrow" style="color: rgba(251,248,241,0.55)" data-reveal>03 — Manifeste</span>
+      <h2 data-reveal style="margin-top: var(--s-3)">Le meuble doit servir <em>la vie qu'on y mène.</em></h2>
+    </div>
+    <p class="lede" data-reveal>
+      Nous croyons qu'un bon meuble se mesure à dix ans, pas à la livraison. C'est pourquoi
+      nous travaillons en atelier, avec les mêmes équipes, sur des matériaux que nous
+      garantissons — et que nous savons réparer.
+    </p>
+  </div>
+
+  <div class="manifesto-pillars">
+    <div class="pillar" data-reveal>
+      <div class="num">— 01</div>
+      <h4>Mesure &amp; plan 3D offert</h4>
+      <p>Un relevé sur site, un plan technique, un visuel 3D photoréaliste — avant tout engagement. Vous voyez le projet exactement comme il sera posé.</p>
+    </div>
+    <div class="pillar" data-reveal>
+      <div class="num">— 02</div>
+      <h4>Atelier intégré, pas de sous-traitance</h4>
+      <p>Découpe, chants, montage, pose&nbsp;: tout est exécuté par nos équipes. Un seul interlocuteur du devis à la garantie — délai annoncé, délai tenu.</p>
+    </div>
+    <div class="pillar" data-reveal>
+      <div class="num">— 03</div>
+      <h4>Garantie 10 ans, SAV à vie</h4>
+      <p>Caissons garantis 10 ans contre tout défaut de structure. Charnières, glissières et pièces d'usure remplaçables à vie au prix coûtant. Aucun meuble jetable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========== BUILD QUALITY =========== -->
+<section class="build wrap" id="construction" data-screen-label="04 construction">
+  <div class="shead">
+    <div>
+      <span class="eyebrow" data-reveal>04 — La structure</span>
+      <h2 data-reveal style="margin-top: var(--s-3)">Caissons <em>hydrofuges,</em> conçus pour durer.</h2>
+    </div>
+    <p class="lede" data-reveal>
+      La qualité d'une cuisine se joue dans le panneau, le chant, l'assemblage. Nous
+      utilisons exclusivement des caissons hydrofuges&nbsp;18&nbsp;mm avec chants PVC&nbsp;ABS
+      posés à chaud — la norme européenne, pas un argument marketing.
+    </p>
+  </div>
+
+  <div class="build-grid">
+    <div class="build-visual" data-reveal>
+      <div class="dgrid"></div>
+      <div class="diagram">
+        <svg viewBox="0 0 500 400" stroke="currentColor" fill="none" style="color: var(--ink)">
+          <!-- carcass -->
+          <rect x="80" y="60" width="340" height="280" stroke-width="1.5"/>
+          <line x1="80" y1="200" x2="420" y2="200" stroke-width="1"/>
+          <line x1="80" y1="270" x2="420" y2="200" stroke-width="0.5" stroke-dasharray="3 3"/>
+          <!-- back panel -->
+          <rect x="92" y="72" width="316" height="256" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.5"/>
+          <!-- edges -->
+          <line x1="80" y1="60" x2="68" y2="48" stroke-width="0.8"/>
+          <line x1="420" y1="60" x2="432" y2="48" stroke-width="0.8"/>
+          <line x1="80" y1="340" x2="68" y2="352" stroke-width="0.8"/>
+          <line x1="420" y1="340" x2="432" y2="352" stroke-width="0.8"/>
+          <!-- dimension lines -->
+          <line x1="60" y1="60" x2="60" y2="340" stroke-width="0.5"/>
+          <line x1="56" y1="60" x2="64" y2="60" stroke-width="0.5"/>
+          <line x1="56" y1="340" x2="64" y2="340" stroke-width="0.5"/>
+          <text x="44" y="205" font-family="JetBrains Mono" font-size="10" fill="currentColor" opacity="0.6">720</text>
+          <line x1="80" y1="360" x2="420" y2="360" stroke-width="0.5"/>
+          <line x1="80" y1="356" x2="80" y2="364" stroke-width="0.5"/>
+          <line x1="420" y1="356" x2="420" y2="364" stroke-width="0.5"/>
+          <text x="240" y="378" font-family="JetBrains Mono" font-size="10" fill="currentColor" opacity="0.6">600 mm</text>
+          <!-- tablette -->
+          <line x1="92" y1="130" x2="408" y2="130" stroke-width="0.8" stroke-dasharray="4 2"/>
+          <circle cx="92" cy="130" r="2" fill="currentColor"/>
+          <circle cx="408" cy="130" r="2" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="dlabel l1">Panneau 18 mm hydrofuge</div>
+      <div class="dlabel l2">Chant ABS 1 mm</div>
+      <div class="dlabel l3">Fond rainuré 8 mm</div>
+      <div class="dlabel l4">Taquets métal — tablette</div>
+    </div>
+
+    <div class="build-info" data-reveal>
+      <h3>Tout ce qu'il faut savoir, sans jargon.</h3>
+      <p>
+        Le panneau STD hydrofuge gonfle &lt;&nbsp;8&nbsp;% après 24&nbsp;h d'immersion (contre
+        18&nbsp;% sur un mélaminé standard). Les chants ABS, posés à chaud, scellent les
+        bords — l'humidité ne pénètre pas. Tout est démontable, tout est réparable.
+      </p>
+      <ul class="spec-list">
+        <li><span class="k">Panneau</span><span class="v">STD hydrofuge 18 mm — densité 720 kg/m³</span></li>
+        <li><span class="k">Chants</span><span class="v">PVC ABS 1 mm posés à chaud — encollage EVA</span></li>
+        <li><span class="k">Fond</span><span class="v">Mélaminé 8 mm, assemblage rainuré</span></li>
+        <li><span class="k">Tablettes</span><span class="v">Réglables sur taquets métal — 80 kg/m</span></li>
+        <li><span class="k">Ferrures</span><span class="v">BLUM Tandembox, charnières Clip-top 110°</span></li>
+        <li><span class="k">Garantie</span><span class="v">10 ans structure · 5 ans façades · SAV à vie</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- materials -->
+  <div class="materials">
+    <article class="mat-card" data-reveal>
+      <div class="mat-art quartz" role="img" aria-label="Plan quartz"></div>
+      <div class="mat-body">
+        <span class="k">Plan 01 — Quartz</span>
+        <h4>Surface non-poreuse, résistante aux taches.</h4>
+        <p>Épaisseur 20 ou 30 mm. Bords droits, biseautés ou arrondis. Large palette de teintes du blanc absolu au noir veiné.</p>
+      </div>
+    </article>
+    <article class="mat-card" data-reveal>
+      <div class="mat-art ceramic" role="img" aria-label="Plan céramique Dekton"></div>
+      <div class="mat-body">
+        <span class="k">Plan 02 — Céramique Dekton &amp; Coverlam</span>
+        <h4>Résiste à la chaleur, aux UV et aux produits chimiques.</h4>
+        <p>Grand format 320×160. Idéal en plan de travail haut de gamme, crédence pleine hauteur, ou habillage d'îlot toute hauteur.</p>
+      </div>
+    </article>
+    <article class="mat-card" data-reveal>
+      <div class="mat-art wood" role="img" aria-label="Plan bois stratifié Egger"></div>
+      <div class="mat-body">
+        <span class="k">Plan 03 — Bois Egger</span>
+        <h4>Stratifié haute densité, chants postformés.</h4>
+        <p>Décors chêne, noyer, marbre. Le meilleur rapport prix/durabilité pour des cuisines familiales très utilisées.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =========== FACADES / FINISHES =========== -->
+<section class="finishes wrap" id="facades" data-screen-label="05 facades">
+  <div class="shead">
+    <div>
+      <span class="eyebrow" data-reveal>05 — Façades</span>
+      <h2 data-reveal style="margin-top: var(--s-3)">Quatorze familles. Combinaisons <em>infinies.</em></h2>
+    </div>
+    <p class="lede" data-reveal>
+      Bois aggloméré, brillant ou mat haute performance, laques cinq couches finition main,
+      panneaux structurés Egger — chaque famille répond à un budget, un usage, une lumière.
+    </p>
+  </div>
+
+  <div class="fam-grid">
+    <article class="family" data-reveal>
+      <div class="family-art">
+        <div style="background:#a17a4a"><span>Horizonte</span></div>
+        <div style="background:#cfa874"><span>San Pietro</span></div>
+        <div style="background:#7a5a36"><span>Malta</span></div>
+        <div class="light" style="background:#e8dec6"><span>Rustic White</span></div>
+      </div>
+      <div class="family-body">
+        <span class="k">Famille 01 — Woodimate</span>
+        <h3>Bois aggloméré, 18 &amp; 22 mm.</h3>
+        <p>Finition bois économique et polyvalente. Le 18&nbsp;mm pour les façades légères, le 22&nbsp;mm pour les structures exigeantes et l'habillage d'îlot.</p>
+        <div class="chips">
+          <span class="chip">Horizonte</span><span class="chip">Rustic Tabac</span>
+          <span class="chip">San Pietro</span><span class="chip">Malta</span>
+          <span class="chip">San Marino</span><span class="chip">Garden Oak</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="family" data-reveal>
+      <div class="family-art">
+        <div style="background:#15161a"><span>Black</span></div>
+        <div style="background:#c9b69a"><span>Latte</span></div>
+        <div class="light" style="background:#bcc1c5"><span>Ice Gris</span></div>
+        <div style="background:#9c673d"><span>Cooper</span></div>
+      </div>
+      <div class="family-body">
+        <span class="k">Famille 02 — Woodipro &amp; Woodimp</span>
+        <h3>Brillant &amp; mat haute performance.</h3>
+        <p>Woodipro 18&nbsp;mm — brillant raffiné qui illumine l'espace. Woodimp 22&nbsp;mm — mat anti-traces, sobre et résistant, idéal sur îlot.</p>
+        <div class="chips">
+          <span class="chip">Antracite</span><span class="chip">Luna</span>
+          <span class="chip">Cashemere</span><span class="chip">Arctic White</span>
+          <span class="chip">Silver Leaf</span><span class="chip">Zirkon</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="family" data-reveal>
+      <div class="family-art">
+        <div style="background:#3d5240"><span>Catania</span></div>
+        <div class="light" style="background:#cfb89a"><span>Florencia</span></div>
+        <div style="background:#7d6450"><span>Brecia</span></div>
+        <div style="background:#1f2a3a"><span>Mesina</span></div>
+      </div>
+      <div class="family-body">
+        <span class="k">Famille 03 — Laque main</span>
+        <h3>Cinq couches, finition manuelle.</h3>
+        <p>Chaque façade laquée bénéficie d'un processus minutieux&nbsp;: cinq couches successives appliquées et poncées à la main pour une finition uniforme et durable.</p>
+        <div class="chips">
+          <span class="chip">Catania</span><span class="chip">Latina</span>
+          <span class="chip">Sicilia</span><span class="chip">Florencia</span>
+          <span class="chip">Foggia</span><span class="chip">Verona</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="family" data-reveal>
+      <div class="family-art">
+        <div style="background:#b58c5d"><span>Chêne naturel</span></div>
+        <div style="background:#6c4828"><span>Chêne tabac</span></div>
+        <div style="background:#3a261a"><span>Noyer Carini</span></div>
+        <div class="light" style="background:#d9c4a4"><span>Chêne blanc</span></div>
+      </div>
+      <div class="family-body">
+        <span class="k">Famille 04 — Egger</span>
+        <h3>L'excellence autrichienne.</h3>
+        <p>Panneaux reconnus pour leur résistance aux rayures, aux impacts et à l'humidité. Textures bois authentiques, surfaces mates anti-traces.</p>
+        <div class="chips">
+          <span class="chip">Chêne Naturel</span><span class="chip">Chêne Tabac</span>
+          <span class="chip">Chêne Sherman</span><span class="chip">Noyer Lincoln</span>
+          <span class="chip">Noyer Bourge</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =========== PALETTE =========== -->
+<section class="palette wrap" id="couleurs" data-screen-label="06 couleurs">
+  <div class="shead">
+    <div>
+      <span class="eyebrow" data-reveal>06 — Palette</span>
+      <h2 data-reveal style="margin-top: var(--s-3)">Plus de soixante <em>teintes,</em> sélectionnées pour vieillir bien.</h2>
+    </div>
+    <p class="lede" data-reveal>
+      Cinq familles — bleus, verts, neutres, chauds et bois. Chaque pigment est testé sur
+      panneau réel, sous lumière froide et chaude, avant d'entrer au catalogue.
+    </p>
+  </div>
+
+  <div class="fam" data-reveal>
+    <div class="fam-head"><h4>Bleus</h4><span class="meta">09 teintes</span></div>
+    <div class="swatches">
+      <div class="sw" style="background:#2a3650"><span>Indigo</span></div>
+      <div class="sw" style="background:#13223a"><span>Profond</span></div>
+      <div class="sw" style="background:#0c1726"><span>Nuit</span></div>
+      <div class="sw" style="background:#23477a"><span>Outremer</span></div>
+      <div class="sw" style="background:#3666a3"><span>Delft</span></div>
+      <div class="sw" style="background:#4a6c93"><span>Denim</span></div>
+      <div class="sw" style="background:#86a7c4"><span>Horizon</span></div>
+      <div class="sw l" style="background:#b9d0e0"><span>Glacier</span></div>
+      <div class="sw l" style="background:#d2dce1"><span>Brume</span></div>
+    </div>
+  </div>
+
+  <div class="fam" data-reveal>
+    <div class="fam-head"><h4>Verts</h4><span class="meta">05 teintes</span></div>
+    <div class="swatches">
+      <div class="sw" style="background:#1e2e1f"><span>Foncé</span></div>
+      <div class="sw" style="background:#2c4530"><span>Sapin</span></div>
+      <div class="sw" style="background:#3d5240"><span>Minéral</span></div>
+      <div class="sw" style="background:#7e9a7e"><span>Eucalyptus</span></div>
+      <div class="sw l" style="background:#a4bba0"><span>Fjord</span></div>
+    </div>
+  </div>
+
+  <div class="fam" data-reveal>
+    <div class="fam-head"><h4>Neutres</h4><span class="meta">10 teintes</span></div>
+    <div class="swatches">
+      <div class="sw" style="background:#1a1b1c"><span>Noir</span></div>
+      <div class="sw" style="background:#2e2e30"><span>Carbone</span></div>
+      <div class="sw" style="background:#3d3e40"><span>Onyx</span></div>
+      <div class="sw" style="background:#5b5d5f"><span>Macadam</span></div>
+      <div class="sw" style="background:#7a7264"><span>Cubanite</span></div>
+      <div class="sw" style="background:#8a8474"><span>Argile</span></div>
+      <div class="sw" style="background:#b6ad9a"><span>Cachemire</span></div>
+      <div class="sw l" style="background:#cfc8b8"><span>Angora</span></div>
+      <div class="sw l" style="background:#e3dccb"><span>Cristal</span></div>
+      <div class="sw l" style="background:#efe9dc"><span>Albâtre</span></div>
+    </div>
+  </div>
+
+  <div class="fam" data-reveal>
+    <div class="fam-head"><h4>Chauds</h4><span class="meta">06 teintes</span></div>
+    <div class="swatches">
+      <div class="sw" style="background:#5a1f1f"><span>Grenat</span></div>
+      <div class="sw" style="background:#6e2828"><span>Bordeaux</span></div>
+      <div class="sw" style="background:#a23a2c"><span>Cerise</span></div>
+      <div class="sw" style="background:#c8754a"><span>Nude</span></div>
+      <div class="sw" style="background:#d99767"><span>Abricot</span></div>
+      <div class="sw l" style="background:#dcb56a"><span>Tournesol</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== PROCESS =========== -->
+<section class="process wrap" id="process" data-screen-label="07 process">
+  <div class="shead">
+    <div>
+      <span class="eyebrow" data-reveal>07 — Notre démarche</span>
+      <h2 data-reveal style="margin-top: var(--s-3)">Cinq étapes. Un seul <em>interlocuteur.</em></h2>
+    </div>
+    <p class="lede" data-reveal>
+      De la première visite à la pose finale, vous traitez avec la même personne. Pas de
+      relais, pas de sous-traitant, pas de devis qui dérive. Délais annoncés en jours, pas
+      en « semaines ».
+    </p>
+  </div>
+
+  <div class="steps">
+    <div class="step" data-reveal>
+      <span class="num">— Étape 01</span>
+      <h4>Visite &amp; relevé</h4>
+      <p>Rendez-vous à votre domicile ou en showroom. Relevé millimétré, prise des contraintes techniques, premier brief design.</p>
+      <span class="dur">≈ 1 h · Gratuit</span>
+    </div>
+    <div class="step" data-reveal>
+      <span class="num">— Étape 02</span>
+      <h4>Plan 3D &amp; devis</h4>
+      <p>Plan technique, visuel 3D photoréaliste, devis détaillé poste par poste. Vous voyez le projet exactement comme il sera posé.</p>
+      <span class="dur">≈ 48 h · Sans engagement</span>
+    </div>
+    <div class="step" data-reveal>
+      <span class="num">— Étape 03</span>
+      <h4>Choix matières</h4>
+      <p>Au showroom, vous touchez chaque façade, chaque plan, chaque finition. Pas de catalogue papier — seulement des échantillons réels.</p>
+      <span class="dur">≈ 1 séance · Inclus</span>
+    </div>
+    <div class="step" data-reveal>
+      <span class="num">— Étape 04</span>
+      <h4>Fabrication atelier</h4>
+      <p>Découpe, chants, montage. Vous recevez des photos d'étape chaque semaine. Aucun module ne quitte l'atelier sans contrôle.</p>
+      <span class="dur">3 à 5 semaines</span>
+    </div>
+    <div class="step" data-reveal>
+      <span class="num">— Étape 05</span>
+      <h4>Pose &amp; réception</h4>
+      <p>Pose par nos équipes en 2 à 4 jours. Réception contradictoire, mise en service, remise du carnet de garantie et des notices.</p>
+      <span class="dur">2 à 4 jours · Garantie 10 ans</span>
+    </div>
+  </div>
+</section>
+
+<!-- =========== GALLERY =========== -->
+<section class="gallery wrap" id="realisations" data-screen-label="08 realisations">
+  <div class="shead">
+    <div>
+      <span class="eyebrow" data-reveal>08 — Réalisations</span>
+      <h2 data-reveal style="margin-top: var(--s-3)">Trois cents projets. Aucun ne <em>se ressemble.</em></h2>
+    </div>
+    <p class="lede" data-reveal>
+      Un échantillon de nos chantiers récents — appartements à Casablanca, villas à
+      Marrakech, riads à Rabat. Chaque projet est pensé pour son lieu, sa lumière, ses
+      usages.
+    </p>
+  </div>
+
+  <div class="shots">
+    <a href="#contact" class="shot p1 s1">
+      <div class="info">
+        <span class="t">Villa Anfa · Casablanca</span>
+        <span class="l">Cuisine îlot · Quartz Calacatta</span>
+      </div>
+    </a>
+    <a href="#contact" class="shot p2 s2">
+      <div class="ph-label">Photo<br/>à venir</div>
+      <div class="info">
+        <span class="t">Riad Hassan · Rabat</span>
+        <span class="l">Laque mat</span>
+      </div>
+    </a>
+    <a href="#contact" class="shot p3 s3">
+      <div class="ph-label">Photo<br/>à venir</div>
+      <div class="info">
+        <span class="t">Appt. Ain Diab</span>
+        <span class="l">Chêne tabac</span>
+      </div>
+    </a>
+    <a href="#contact" class="shot p4 s4">
+      <div class="ph-label">Photo à venir</div>
+      <div class="info">
+        <span class="t">Villa Palmeraie · Marrakech</span>
+        <span class="l">Salle de bain · Céramique grand format</span>
+      </div>
+    </a>
+    <a href="#contact" class="shot p5 s5">
+      <div class="ph-label">Photo à venir</div>
+      <div class="info">
+        <span class="t">Loft Gauthier · Casablanca</span>
+        <span class="l">Dressing pleine hauteur · Vert minéral</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- =========== TESTIMONIALS =========== -->
+<section class="kudos wrap" data-screen-label="09 testimonials">
+  <div class="shead">
+    <div>
+      <span class="eyebrow" data-reveal>09 — Témoignages</span>
+      <h2 data-reveal style="margin-top: var(--s-3)">Ce que disent les <em>familles</em> qui vivent dans nos cuisines.</h2>
+    </div>
+    <p class="lede" data-reveal>
+      Note moyenne 4,9/5 sur 142 avis vérifiés Google &amp; Houzz. Chaque chantier livré
+      est suivi pendant 12 mois par notre service après-vente.
+    </p>
+  </div>
+
+  <div class="kudos-grid">
+    <article class="quote" data-reveal>
+      <div class="stars">★★★★★</div>
+      <blockquote>
+        « Précision absolue sur les délais. Le plan 3D correspondait au millimètre à la
+        cuisine livrée. On a touché chaque échantillon avant de signer — pas de mauvaise
+        surprise. »
+      </blockquote>
+      <div class="quote-foot">
+        <div class="avatar">SE</div>
+        <div>
+          <div class="who">Salma El&nbsp;K.</div>
+          <div class="where">Casablanca · Cuisine îlot</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="quote" data-reveal>
+      <div class="stars">★★★★★</div>
+      <blockquote>
+        « Six ans après, les façades laquées sont comme neuves. Une charnière est tombée
+        après un déménagement — remplacée gratuitement en 48 h. C'est ça, le SAV à vie. »
+      </blockquote>
+      <div class="quote-foot">
+        <div class="avatar">YM</div>
+        <div>
+          <div class="who">Younes M.</div>
+          <div class="where">Rabat · Dressing</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="quote" data-reveal>
+      <div class="stars">★★★★★</div>
+      <blockquote>
+        « J'avais un budget serré. L'équipe a redessiné le projet trois fois pour rester
+        dans l'enveloppe — sans rogner sur la qualité du caisson. Honnête et patient. »
+      </blockquote>
+      <div class="quote-foot">
+        <div class="avatar">NB</div>
+        <div>
+          <div class="who">Nadia B.</div>
+          <div class="where">Marrakech · Salle de bain</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =========== FAQ =========== -->
+<section class="faq wrap" id="faq" data-screen-label="10 faq">
+  <div class="faq-grid">
+    <div>
+      <span class="eyebrow" data-reveal>10 — Questions fréquentes</span>
+      <h2 data-reveal style="margin-top: var(--s-3); font-size: var(--t-h2);">Les questions qu'on nous <em>pose le plus.</em></h2>
+      <p data-reveal style="margin-top: var(--s-3); color: var(--ink-soft); font-size: 16px; line-height: 1.6;">
+        Vous ne trouvez pas votre réponse&nbsp;? Écrivez-nous, nous répondons en moins de
+        4&nbsp;heures ouvrées.
+      </p>
+      <div data-reveal style="margin-top: var(--s-3);">
+        <a class="btn ghost" href="#contact">Poser une question</a>
+      </div>
+    </div>
+
+    <div data-reveal>
+      <details class="q" open>
+        <summary>Quel est le délai entre la commande et la pose&nbsp;? <span class="ic">+</span></summary>
+        <div class="ans">En moyenne 5 à 7 semaines pour une cuisine complète. Trois à cinq semaines de fabrication atelier, deux à quatre jours de pose. Nous annonçons le délai au devis et nous le tenons — pénalité contractuelle au-delà.</div>
+      </details>
+      <details class="q">
+        <summary>Combien coûte une cuisine Ecocina&nbsp;? <span class="ic">+</span></summary>
+        <div class="ans">Une cuisine équipée linéaire de 3&nbsp;mètres démarre autour de 45&nbsp;000&nbsp;MAD en façade Woodimate, plan stratifié. Une cuisine îlot avec façades laquées et plan quartz se situe entre 90&nbsp;000 et 160&nbsp;000&nbsp;MAD. Devis chiffré gratuit sous 48&nbsp;h.</div>
+      </details>
+      <details class="q">
+        <summary>Faut-il vider la pièce avant la pose&nbsp;? <span class="ic">+</span></summary>
+        <div class="ans">Non. Nous protégeons le sol, les murs et les meubles existants. La dépose de l'ancienne cuisine peut être incluse au devis — comptez une demi-journée supplémentaire.</div>
+      </details>
+      <details class="q">
+        <summary>Que couvre la garantie 10 ans&nbsp;? <span class="ic">+</span></summary>
+        <div class="ans">La structure complète&nbsp;: panneaux, assemblages, fond, chants. Les façades sont garanties 5 ans contre la décoloration et le décollement. Les pièces d'usure (charnières, glissières, poignées) sont remplaçables à vie au prix coûtant.</div>
+      </details>
+      <details class="q">
+        <summary>Travaillez-vous en dehors de Casablanca&nbsp;? <span class="ic">+</span></summary>
+        <div class="ans">Oui — Rabat, Marrakech, Tanger, El Jadida et toute la côte atlantique. Frais de déplacement offerts pour tout projet supérieur à 60&nbsp;000&nbsp;MAD.</div>
+      </details>
+      <details class="q">
+        <summary>Puis-je voir les matériaux avant de signer&nbsp;? <span class="ic">+</span></summary>
+        <div class="ans">Indispensable. Notre showroom expose chaque famille de façade, chaque plan de travail, chaque finition de poignée. Rendez-vous sur prise de contact — comptez 1 h pour une visite complète.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =========== SHOWROOM + CONTACT =========== -->
+<section class="visit wrap" id="contact" data-screen-label="11 contact">
+  <div class="shead">
+    <div>
+      <span class="eyebrow" data-reveal>11 — Discutons</span>
+      <h2 data-reveal style="margin-top: var(--s-3)">Prenons un café, dessinons votre <em>projet.</em></h2>
+    </div>
+    <p class="lede" data-reveal>
+      Le devis et le plan 3D sont offerts, sans engagement. La première visite dure
+      environ une heure — apportez vos plans, vos inspirations, ou simplement vos idées.
+    </p>
+  </div>
+
+  <div class="visit-grid">
+    <aside class="showroom" data-reveal>
+      <div class="showroom-map" aria-label="Carte du showroom Ecocina">
+        <div class="pin" aria-hidden="true"></div>
+      </div>
+      <div class="showroom-info">
+        <h3>Showroom Casablanca</h3>
+        <div class="row"><span class="k">Adresse</span><span class="v">Route d'El Jadida, Casablanca — Maroc</span></div>
+        <div class="row"><span class="k">Horaires</span><span class="v">Lun–Sam · 9 h&nbsp;–&nbsp;19 h · Dim sur RDV</span></div>
+        <div class="row"><span class="k">Téléphone</span><span class="v">+212 6 45 63 32 43</span></div>
+        <div class="row"><span class="k">Email</span><span class="v">contact@ecocinacom.com</span></div>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/212600076274">WhatsApp</a>
+          <a class="btn ghost" href="tel:+212645633243">Appeler</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="cta-block" data-reveal>
+      <h3>Demander un devis</h3>
+      <p class="lede">Réponse en moins de 4&nbsp;heures ouvrées. Devis chiffré en 48&nbsp;h après la visite de relevé.</p>
+      <a href="https://wa.me/WHATSAPP_NUMBER_HERE" target="_blank" class="btn wa" style="display: inline-flex; margin-top: var(--s-3);">💬 Contactez-nous sur WhatsApp <span class="arrow">→</span></a>
+      <p style="margin-top: var(--s-2); font-size: 13px; color: var(--ink-mute);">Remplacez <code>WHATSAPP_NUMBER_HERE</code> par votre numéro au format +212XXXXXXXXX</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FOOTER =========== -->
+<footer data-screen-label="12 footer">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="name">Ecocina</div>
+      <p>Cuisines, dressings et salles de bain sur mesure. Fabriqué et posé au Maroc, depuis 2015.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Nos métiers</h5>
+      <a href="#services">Cuisines</a>
+      <a href="#services">Dressings</a>
+      <a href="#services">Salles de bain</a>
+      <a href="#construction">Caissons hydrofuges</a>
+      <a href="#facades">Façades</a>
+      <a href="#couleurs">Couleurs</a>
+    </div>
+    <div class="foot-col">
+      <h5>Maison</h5>
+      <a href="#process">Notre démarche</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <span>Showroom Casablanca</span>
+    </div>
+    <div class="foot-col">
+      <h5>Joindre l'équipe</h5>
+      <a href="tel:+212645633243">+212 6 45 63 32 43</a>
+      <a href="https://wa.me/212600076274">WhatsApp · 06 00 07 62 74</a>
+      <a href="mailto:contact@ecocinacom.com">contact@ecocinacom.com</a>
+      <span>Lun–Sam · 9 h – 19 h</span>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Ecocina · Tous droits réservés</span>
+    <span>Mentions légales · Confidentialité</span>
+  </div>
+</footer>
+
+<!-- =========== MOBILE CALL BAR =========== -->
+<div class="callbar" aria-hidden="true">
+  <a class="btn wa" href="https://wa.me/WHATSAPP_NUMBER_HERE">WhatsApp</a>
+  <a class="btn" href="#contact">Devis gratuit</a>
+</div>
+
+<!-- =========== FLOATING WHATSAPP BUTTON (DESKTOP) =========== -->
+<a href="https://wa.me/WHATSAPP_NUMBER_HERE" target="_blank" class="floating-wa" title="Contactez-nous sur WhatsApp">
+  💬
+</a>
+
+<script>
+  // Sticky nav state
+  const nav = document.querySelector('.nav');
+  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Drawer
+  const drawer = document.getElementById('drawer');
+  const openBtn = document.getElementById('menuOpen');
+  const closeBtn = document.getElementById('menuClose');
+  const openDrawer = () => { drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+  const closeDrawer = () => { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+  openBtn?.addEventListener('click', openDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+  drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+  // Reveal on scroll
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -80px 0px', threshold: 0.05 });
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
